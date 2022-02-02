@@ -35,7 +35,6 @@ function addArticlesInMain(articles){
 function createArticleFromTemplate(article, $template){
     let title = article.title.split("-");
     $template.querySelector(".main-article").dataset.id = article.id;
-    // $template.querySelector(".main_article-picture source").srcset = `./img/${article.img}.webp`;
     $template.querySelector(".main_article-picture img").src = `./img/${article.img}.svg`;
     $template.querySelector(".main_article-text .main_article-title").textContent = title[0];
     $template.querySelector(".main_article-text .main_article-subtitle").textContent = title[1];

@@ -5,7 +5,6 @@ async function renderArticleInModal(id, ArticlesFetch){
     let articles = await ArticlesFetch(), 
     article = articles.filter(art => art.id == id);
 
-    // modal.querySelector(".modal-header picture source").srcset = `img/${article[0].img}.webp`;
     modal.querySelector(".modal-header picture img").src = `img/${article[0].img}.svg`;
     modal.querySelector(".modal-header h2").textContent = article[0].title.split("-")[0];
     modal.querySelector(".modal-header h3").textContent = article[0].title.split("-")[1];
