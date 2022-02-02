@@ -1,0 +1,85 @@
+.navbar
+    +flex(start, center, row nowrap)
+    padding: 10px
+    position: fixed
+    top: 10px
+    height: 40px
+    border-radius: 10px
+    transition: all 200ms ease
+    background: $black_3
+    z-index: 10
+    .nav-title
+        font-weight: 200
+        font-size: 2rem
+        span:nth-child(1)
+            color: $orange
+        span:nth-child(2)
+            color: $blue
+        span:nth-child(3)
+            color: $yellow
+    .nav-btn
+        position: absolute
+        width: 3rem
+        height: 3rem
+        background-repeat: no-repeat
+        background-size: 90%
+        background-position: center
+        border: none
+        outline: none
+        cursor: pointer
+        user-select: none
+        background-color: transparent
+        transition: all 300ms linear
+    .nav_btn-theme
+        right: calc( (30px + 10px) + 10px )
+        background-image: url(../img/sun.svg)
+    .nav_btn-menu
+        right: 10px
+        background-image: url(../img/books_light.svg)
+body.light .navbar
+    background: $white_1
+    .nav-title
+        color: $black_3
+    .nav_btn-theme
+        background-image: url(../img/mon.svg)
+    .nav_btn-menu
+        background-image: url(../img/books_dark.svg)
+.navbar.scroll
+    top: 0
+    box-shadow: 0px 1px 2px rgba($white_2, .5)
+body.light .navbar.scroll
+    box-shadow: 0px 1px 2px rgba($black_3, .5)
+
+
+// TELEFONO
+.navbar
+    +telefono
+        margin-top: 2rem
+        position: static
+        +flex(center, center, row nowrap)
+        .nav-btn
+            position: fixed
+            bottom: 0
+            width: 3.5rem
+            height: 3.5rem
+            background-size: 55%
+            background-color: rgba($black_3, .8)
+        .nav_btn-theme
+            left: 0
+            border-radius: 50%
+        .nav_btn-menu
+            right: 5vw
+            border-radius: 10px 10px 0 0
+        .nav_btn-menu.active
+            bottom: calc( 80vh - 2px )
+            border: solid $orange 1px
+            border-bottom: none
+body.light .navbar
+    +telefono
+        .nav-btn
+            background-color: rgba($white_1, .8)
+
+.navbar.scroll
+    +telefono
+        .nav-btn
+            top: calc(100vh - 3.5rem)

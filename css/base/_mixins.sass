@@ -1,0 +1,18 @@
+=flex($j, $a, $ff)
+    display: flex
+    justify-content: $j
+    align-items: $a
+    flex-flow: $ff
+
+
+=telefono 
+    @media (max-width: 360px) 
+        @content
+
+=tablet
+    @media (max-width: 680px) 
+        @content
+    
+=laptop 
+    @media (min-width: 770px) 
+        @content

@@ -1,0 +1,84 @@
+.modal::-webkit-scrollbar
+    width: 3px
+.modal::-webkit-scrollbar-thumb
+    background: $orange
+    border-radius: 10px
+.modal
+    overflow-y: scroll
+    overflow-x: hidden
+    padding: 2rem
+    opacity: 0
+    visibility: hidden
+    position: fixed
+    top: 2vh
+    left: 2vw
+    width: 96vw
+    height: 96vh
+    background: $black_3
+    z-index: 11
+    +flex(start, center, column nowrap)
+    row-gap: 3rem
+    transition: all 200ms ease-in-out
+    
+    .modal-btnClose
+        position: absolute
+        top: 0
+        right: 0.5rem
+        font-size: 2rem
+        border: none
+        background: none
+        +flex(center, center, row nowrap)
+        opacity: 0.8
+        cursor: pointer
+        color: $orange
+        transition: all 200ms ease-in-out
+        &:hover
+            opacity: 1
+    .modal-header
+        +flex(center,center, column nowrap)
+        row-gap: 0.5rem
+        picture
+            width: 10rem
+            height: 10rem
+            img
+                width: 100%
+                height: 100%
+        h2
+            color: $orange
+            font-size: 2rem
+    
+    .modal-btnStatus
+        border: none
+        outline: none
+        background: none
+        cursor: pointer
+        transition: all 200ms ease
+        color: rgba($white_1, .5)
+        &:hover
+            color: $white_1
+        &.active
+            color: rgba($orange, .5)
+            &:hover
+                color: $orange
+                
+.modal.active
+    visibility: visible
+    opacity: 1
+
+body.light .modal::-webkit-scrollbar-thumb
+    background: $blue
+body.light .modal
+    background: $white_1
+    .modal-btnClose
+        color: $blue
+    .modal-header
+        h2
+            color: $blue
+    .modal-btnStatus
+        color: rgba($black_3, .5)
+        &:hover
+            color: $black_3
+        &.active
+            color: $blue
+    &::after
+        background: rgba($white_1, .6)

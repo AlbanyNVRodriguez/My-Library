@@ -1,0 +1,90 @@
+.main
+    width: 90vw
+    height: auto
+    +flex(space-around, center, row wrap)
+    .main-article::before
+        opacity: 0
+        visibility: hidden
+        position: absolute
+        top: 1rem
+        left: -2.5rem
+        content: "Leido"
+        padding: 0.2rem 3rem
+        text-align: center
+        background: $white_2
+        color: $black_3
+        transform: rotate(-40deg)
+        transition: all 200ms ease-in-out
+    .main-article
+        overflow: hidden
+        +flex(space-between, center, column wrap)
+        position: relative
+        margin: 0.5rem
+        padding: 1rem
+        width: 150px
+        height: 200px
+        border-radius: 20px
+        background: $black_3
+        transition: all 200ms ease
+        &.read::before
+            opacity: 1
+            visibility: visible
+            
+    .main_article-picture
+        width: 8rem
+        height: 8rem
+        img
+            width: 100%
+            height: 100%
+    .main_article-text
+        font-size: .9rem
+        font-weight: 200
+        +flex(center, center, column nowrap)
+        row-gap: 1rem
+        text-align: center
+        .main_article-title
+            color: $yellow
+        .main_article-subtitle
+            color: $white_1
+            letter-spacing: 1px
+    .main_article-buttons
+        width: 100%
+        +flex(space-between, center, row nowrap)
+        .main_article_buttons-btn
+            width: 6rem
+            height: 2rem
+            border-radius: 20px
+            text-decoration: none
+            outline: none
+            border: none
+            cursor: pointer
+            font-size: 1.1rem
+            transition: all 200ms ease
+            user-select: none
+            &.remove
+                background: rgba($orange, .9)
+                &:hover
+                    background: $orange
+        .main_art_buttons-read
+            color: $black_1
+            background: rgba($yellow, .9)
+            &:hover
+                background: $yellow
+        .main_art_buttons-save
+            color: $white_1
+            background: rgba($black_1, .9)
+            &:hover
+                background: $black_1
+        
+body.light .main
+    .main-article::before
+        background: $black_3
+        color: $white_2
+    .main-article   
+        background: $white_1
+        .main_article-text .main_article-title
+            color: $blue
+        .main_article-text .main_article-subtitle
+            color: $black_3
+        .main_article-buttons .main_art_buttons-read
+            background: rgba($blue, .9)
