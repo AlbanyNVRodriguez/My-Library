@@ -1,8 +1,8 @@
 // RENDER ARTICLE IN MODAL
-async function renderArticleInModal(id, ArticlesFetch){
+async function renderArticleInModal(id, articlesFetch){
     let modal = document.querySelector(".modal");
     modal.dataset.id = id;
-    let articles = await ArticlesFetch(), 
+    let articles = await articlesFetch(), 
     article = articles.filter(art => art.id == id);
 
     modal.querySelector(".modal-header picture img").src = `img/${article[0].img}.svg`;
@@ -18,7 +18,7 @@ async function renderArticleInModal(id, ArticlesFetch){
     modal.classList.add("active");
 }
 function loadArticlesStatusInLocalStorage(id, modal){
-    if(localStorage.getItem("ArticlesStatusLocalStorage") !== null && localStorage.getItem("ArticlesStatusLocalStorage").includes(id)){
+    if(localStorage.getItem("ArticleReadingStatusLocalStorage") !== null && localStorage.getItem("ArticleReadingStatusLocalStorage").includes(id)){
         modal.querySelector(".modal-btnStatus").classList.add("active");
         modal.querySelector(".modal-btnStatus").textContent = "Leido";
     }else{
@@ -44,21 +44,21 @@ function closeModalOnClick(e){
     }
 }
 // BUTTON TO CLOSE THE MODAL
-function buttonCloseModal(click){
+function buttonToCloseTheModal(click){
     if(click.matches(".modal .modal-btnClose"))  document.querySelector(".modal").classList.remove("active");
 }
 // BUTTON TO SAVE OR DELETE STATUS ARTICLE FROM MODAL
-function buttonToSaveOrDeleteStatusArticleFromModal(params){
+function buttonToSaveOrDeleteTheReadingStatusOfTheArticle(params){
     if(params.click.matches(".modal .modal-btnStatus")){
-        let { click, saveStatusArticleFromModalInLocalStorage, deleteStatusArticleFromModalInLocalStorage } = params;
+        let { click, saveArticleReadInLocalStorage, deleteArticleReadInLocalStorage } = params;
         let id = click.parentElement.dataset.id;
         if(click.textContent == "No Leido"){
-            saveStatusArticleFromModalInLocalStorage(id);
+            saveArticleReadInLocalStorage(id);
             click.classList.add("active");
             click.textContent = "Leido";
             document.querySelector(`.main .main-article[data-id="${id}"]`).classList.add("read");
         }else{
-            deleteStatusArticleFromModalInLocalStorage(id);
+            deleteArticleReadInLocalStorage(id);
             click.classList.remove("active");
             click.textContent = "No Leido";
             document.querySelector(`.main .main-article[data-id="${id}"]`).classList.remove("read");
@@ -82,13 +82,13 @@ function getArticleHTML(params){
     XHR.send();
 }
 // DISABLE SCROLL FOR MODAL
-function disableScrollForModal(){
+function disableScrollingWhenOpeningModal(){
     if(document.querySelector(".modal").className.includes("active")) window.scrollTo(0,0);
 }
 export {
-    buttonCloseModal,
-    buttonToSaveOrDeleteStatusArticleFromModal,
+    buttonToCloseTheModal,
+    buttonToSaveOrDeleteTheReadingStatusOfTheArticle,
     closeModalOnClick,
     renderArticleInModal,
-    disableScrollForModal
+    disableScrollingWhenOpeningModal
 }

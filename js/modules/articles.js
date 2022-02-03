@@ -1,10 +1,10 @@
 async function renderArticles(){
-    let articles = await ArticlesFetch();
+    let articles = await articlesFetch();
     orderBooksByTitle(articles);
     addArticlesInMain(articles);
 }
 // GETTING JSON ARTICLES
-async function ArticlesFetch(){
+async function articlesFetch(){
     try { 
         const res = await fetch("js/modules/dataBase.json");
         const json = await (res.ok ? res.json() : Promise.reject(res));
@@ -44,7 +44,7 @@ function createArticleFromTemplate(article, $template){
 }
 // BUTTON TO SAVE OR DELETE ARTICLE
 function buttonToSaveOrDeleteArticle(params){
-    let { click, renderMenu, saveArticleInLocalStorage, deleteArticleFromLocalStorage } = params;
+    let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage } = params;
     if(click.matches(".main_art_buttons-save")){
         let id = click.parentElement.parentElement.dataset.id;
         if(click.textContent == "Guardar"){
@@ -52,7 +52,7 @@ function buttonToSaveOrDeleteArticle(params){
             click.textContent="Eliminar";
             click.classList.add("remove");
         }else{
-            deleteArticleFromLocalStorage(id);
+            deleteArticleInLocalStorage(id);
             click.textContent="Guardar";
             click.classList.remove("remove");
         }
@@ -60,17 +60,17 @@ function buttonToSaveOrDeleteArticle(params){
     }
 }
 // BUTTON TO READ THE ARTICLE IN THE MODAL
-function buttonOpenArticleInModal(params){
-    let { click, renderArticleInModal, ArticlesFetch } = params;
+function openModalFromArticle(params){
+    let { click, renderArticleInModal, articlesFetch } = params;
     if(click.matches(".main .main_art_buttons-read")){
         let id = click.closest(".main-article").dataset.id;
-        renderArticleInModal(id, ArticlesFetch);
+        renderArticleInModal(id, articlesFetch);
     }
 }
 
 export {
-    ArticlesFetch,
+    articlesFetch,
     renderArticles,
     buttonToSaveOrDeleteArticle,
-    buttonOpenArticleInModal
+    openModalFromArticle
 }

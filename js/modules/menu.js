@@ -1,15 +1,16 @@
+// RENDER MENU
 function renderMenu(){
     document.querySelector(".menu").innerHTML="";
     if(localStorage.getItem("ArticlesLocalStorage") !== null && localStorage.getItem("ArticlesLocalStorage") !== "") addItemsInMenu();
 }
 // ADD ITEMS IN MENU
 function addItemsInMenu(){
-    let BooksLocalStorage = localStorage.getItem("ArticlesLocalStorage").split(",");
+    let articlesInLocalStorage = localStorage.getItem("ArticlesLocalStorage").split(",");
     const $ul = document.querySelector(".menu"),
     $template = document.querySelector(".template-item").content,
     fragment = document.createDocumentFragment();
-    BooksLocalStorage.forEach(book => {
-        let itemMenu = createItemFromTemplate(book, $template);
+    articlesInLocalStorage.forEach(idArticle => {
+        let itemMenu = createItemFromTemplate(idArticle, $template);
         fragment.appendChild(itemMenu);
     });
     $ul.append(fragment);
@@ -25,25 +26,25 @@ function createItemFromTemplate(id, $template){
     let copy = document.importNode($template, true);
     return copy;
 }
-// BUTTON TO DELETE ITEM
-function buttonToDeleteItem(params){
-    let { click, renderMenu, deleteArticleFromLocalStorage } = params;
-    if(click.matches(".menu-item .menu_item-btn")){
+// BUTTON TO REMOVE MENU ITEM
+function buttonToRemoveMenuItem(params){
+    if(params.click.matches(".menu-item .menu_item-btn")){
+        let { click, deleteArticleInLocalStorage } = params;
         let id = click.parentElement.dataset.id;
         let btnItem = document.querySelector(`.main-article[data-id="${id}"`).querySelector(".main_art_buttons-save");
         btnItem.textContent="Guardar";
         btnItem.classList.remove("remove");
-        deleteArticleFromLocalStorage(id);
+        deleteArticleInLocalStorage(id);
         renderMenu();
     }
 }
 // OPEN MODAL FROM MENU ITEM
 function openModalFromMenuItem(params){
-    let { click, renderArticleInModal, ArticlesFetch } = params;
-    if(click.matches(".menu .menu-item")) renderArticleInModal(click.dataset.id, ArticlesFetch)
+    let { click, renderArticleInModal, articlesFetch } = params;
+    if(click.matches(".menu .menu-item")) renderArticleInModal(click.dataset.id, articlesFetch)
 }
 export {
     renderMenu,
-    buttonToDeleteItem,
+    buttonToRemoveMenuItem,
     openModalFromMenuItem
 }

@@ -1,31 +1,36 @@
-import { navbarScroll, buttonChangeTheme, buttonMenu } from "./modules/navbar.js"; // NAVBAR
-import { renderMenu, buttonToDeleteItem, openModalFromMenuItem } from "./modules/menu.js"; // MENU
-import { ArticlesFetch, renderArticles, buttonToSaveOrDeleteArticle, buttonOpenArticleInModal } from "./modules/articles.js"; // ARTICLES
-import { buttonCloseModal, buttonToSaveOrDeleteStatusArticleFromModal, closeModalOnClick, renderArticleInModal, disableScrollForModal} from "./modules/modal.js"; // MODAL
-import { loadLocalStorage, saveArticleInLocalStorage, deleteArticleFromLocalStorage, themeDark, themeLight, saveStatusArticleFromModalInLocalStorage, deleteStatusArticleFromModalInLocalStorage} from "./modules/localStorage.js"; // LOCAL STORAGE
+// NAVBAR
+import { effectNavbarScroll, buttonChangeThemePage, buttonToShowOrHideTheMenu, themeDark, themeLight} from "./modules/navbar.js"; 
+// MENU
+import { renderMenu, buttonToRemoveMenuItem, openModalFromMenuItem } from "./modules/menu.js"; 
+// ARTICLES
+import { articlesFetch, renderArticles, buttonToSaveOrDeleteArticle, openModalFromArticle } from "./modules/articles.js"; 
+// MODAL
+import { renderArticleInModal, disableScrollingWhenOpeningModal, buttonToCloseTheModal, buttonToSaveOrDeleteTheReadingStatusOfTheArticle, closeModalOnClick } from "./modules/modal.js"; 
+// LOCAL STORAGE
+import { loadArticlesFromLocalStorage, loadThemeFromLocalStorage, saveArticleInLocalStorage, deleteArticleInLocalStorage,  saveArticleReadInLocalStorage, deleteArticleReadInLocalStorage} from "./modules/localStorage.js"; 
 
 document.addEventListener("DOMContentLoaded",  async e=>{
-    Promise.all([await renderArticles(),await loadLocalStorage(), renderMenu(), navbarScroll()]);
+    Promise.all([await renderArticles(), loadArticlesFromLocalStorage(), loadThemeFromLocalStorage(themeDark, themeLight), renderMenu(), effectNavbarScroll()]);
 });
 // CLICK EVENTS
 document.addEventListener("click", e=> {
     let click = e.target;
-    // // theme
-    buttonChangeTheme( {click, themeDark, themeLight} );
-    // // menu
-    buttonMenu(click);
-    buttonToDeleteItem( {click, renderMenu, deleteArticleFromLocalStorage} );
-    openModalFromMenuItem({click, renderArticleInModal, ArticlesFetch});
-    // // article
-    buttonToSaveOrDeleteArticle( {click, renderMenu, saveArticleInLocalStorage, deleteArticleFromLocalStorage} );
-    buttonOpenArticleInModal({click, renderArticleInModal, ArticlesFetch});
-    // // Modal
-    buttonCloseModal(click);
-    buttonToSaveOrDeleteStatusArticleFromModal({ click, saveStatusArticleFromModalInLocalStorage, deleteStatusArticleFromModalInLocalStorage });
+    // navbar
+    buttonChangeThemePage(click);
+    // menu
+    buttonToShowOrHideTheMenu(click);
+    buttonToRemoveMenuItem( {click, deleteArticleInLocalStorage} );
+    openModalFromMenuItem({click, renderArticleInModal, articlesFetch});
+    // article
+    buttonToSaveOrDeleteArticle( {click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage} );
+    openModalFromArticle({click, renderArticleInModal, articlesFetch});
+    // Modal
+    buttonToCloseTheModal(click);
+    buttonToSaveOrDeleteTheReadingStatusOfTheArticle({ click, saveArticleReadInLocalStorage, deleteArticleReadInLocalStorage });
     closeModalOnClick(e);
 });
 // SCROLL EVENT
 document.addEventListener("scroll", e=>{
-    disableScrollForModal();
-    navbarScroll();
+    disableScrollingWhenOpeningModal();
+    effectNavbarScroll();
 });
