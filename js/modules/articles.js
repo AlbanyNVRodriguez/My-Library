@@ -20,6 +20,7 @@ function orderBooksByTitle(articles){
         return (a.title).toLowerCase() > (b.title).toLowerCase()?  1 :  (a.title).toLowerCase() < (b.title).toLowerCase()?  -1 :  0;
     });
 }
+// ------------------------------------------------
 // ADD ARTICLES IN MAIN
 function addArticlesInMain(articles){
     const $main = document.querySelector(".main"),
@@ -42,35 +43,50 @@ function createArticleFromTemplate(article, $template){
     let copy = document.importNode($template, true);
     return copy;
 }
-// BUTTON TO SAVE OR DELETE ARTICLE
-function buttonToSaveOrDeleteArticle(params){
-    let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage } = params;
-    if(click.matches(".main_art_buttons-save")){
-        let id = click.parentElement.parentElement.dataset.id;
-        if(click.textContent == "Guardar"){
-            saveArticleInLocalStorage(id);
-            click.textContent="Eliminar";
-            click.classList.add("remove");
-        }else{
-            deleteArticleInLocalStorage(id);
-            click.textContent="Guardar";
-            click.classList.remove("remove");
-        }
-        renderMenu();
-    }
-}
-// BUTTON TO READ THE ARTICLE IN THE MODAL
-function openModalFromArticle(params){
-    let { click, renderArticleInModal, articlesFetch } = params;
-    if(click.matches(".main .main_art_buttons-read")){
+// ------------------------------------------------
+// BUTTON TO OPEN MODAL FROM ARTICLE
+function buttonOpenModalFromArticle(params){
+    if(params.click.matches(".main .main_art_buttons-read")){
+        let { click, renderArticleInModal } = params;
         let id = click.closest(".main-article").dataset.id;
         renderArticleInModal(id, articlesFetch);
     }
 }
-
+// ------------------------------------------------
+// BUTTON TO SAVE OR DELETE ARTICLE
+function buttonToSaveOrDeleteArticle(params){
+    if(params.click.matches(".main_art_buttons-save")){
+        let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage } = params;
+        let article = click.closest(".main-article"),
+        id = article.dataset.id;
+        if(click.textContent == "Guardar"){
+            saveArticleInLocalStorage(id);
+            changeArticleButtonStateToDelete(id);
+        }else{
+            deleteArticleInLocalStorage(id);
+            changeArticleButtonStateToSaved(id);
+        }
+        renderMenu();
+    }
+}
+// CHANGE ARTICLE BUTTON STATE TO DELETE
+function changeArticleButtonStateToDelete(id){
+    let btnArticle = document.querySelector(`.main-article[data-id="${id}"] .main_art_buttons-save`);
+    btnArticle.textContent="Eliminar";
+    btnArticle.classList.add("remove");
+}
+// CHANGE ARTICLE BUTTON STATE TO SAVED
+function changeArticleButtonStateToSaved(id){
+    let btnArticle = document.querySelector(`.main-article[data-id="${id}"] .main_art_buttons-save`);
+    btnArticle.textContent="Guardar";
+    btnArticle.classList.remove("remove");
+}
+// ------------------------------------------------
 export {
     articlesFetch,
     renderArticles,
     buttonToSaveOrDeleteArticle,
-    openModalFromArticle
+    changeArticleButtonStateToSaved,
+    changeArticleButtonStateToDelete,
+    buttonOpenModalFromArticle
 }

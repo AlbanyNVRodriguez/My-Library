@@ -2,8 +2,8 @@
 function effectNavbarScroll(){
     let navbar = document.querySelector(".navbar");
     if(window.innerWidth > 360 ) window.scrollY > 10? navbar.classList.add("scroll") : navbar.classList.remove("scroll");
-    
 }
+// ------------------------------------------------
 // BUTTON TO CHANGE THE THEME OF THE PAGE
 function buttonChangeThemePage(click){
     if(click.matches(".navbar .nav_btn-theme")) document.querySelector("body").className.includes("light")? themeDark() : themeLight();
@@ -18,10 +18,10 @@ function themeLight(){
     document.querySelector("body").classList.add("light");
     localStorage.setItem("themeLocalStorage", "light");
 }
+// ------------------------------------------------
 // BUTTON TO SHOW OR HIDE THE MENU
 function buttonToShowOrHideTheMenu(click){
     if(click.matches(".navbar .nav_btn-menu")) click.className.includes("active")? hideTheMenu() : showTheMenu(click);
-    
     if(!click.matches(".navbar .nav_btn-menu") && 
     !click.matches(".menu") && 
     !click.matches(".main .main_art_buttons-save") && 
@@ -39,7 +39,7 @@ function hideTheMenu(){
     document.querySelector(".navbar .nav_btn-menu").classList.remove("active");
     document.querySelector(".menu").classList.remove("active");
 }
-
+// ------------------------------------------------
 export {
     effectNavbarScroll,
     buttonChangeThemePage,

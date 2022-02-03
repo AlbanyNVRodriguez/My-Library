@@ -26,23 +26,27 @@ function createItemFromTemplate(id, $template){
     let copy = document.importNode($template, true);
     return copy;
 }
+// ------------------------------------------------
 // BUTTON TO REMOVE MENU ITEM
 function buttonToRemoveMenuItem(params){
     if(params.click.matches(".menu-item .menu_item-btn")){
-        let { click, deleteArticleInLocalStorage } = params;
+        let { click, deleteArticleInLocalStorage, changeArticleButtonStateToSaved} = params;
         let id = click.parentElement.dataset.id;
-        let btnItem = document.querySelector(`.main-article[data-id="${id}"`).querySelector(".main_art_buttons-save");
-        btnItem.textContent="Guardar";
-        btnItem.classList.remove("remove");
         deleteArticleInLocalStorage(id);
+        changeArticleButtonStateToSaved(id);
         renderMenu();
     }
 }
+// ------------------------------------------------
 // OPEN MODAL FROM MENU ITEM
 function openModalFromMenuItem(params){
-    let { click, renderArticleInModal, articlesFetch } = params;
-    if(click.matches(".menu .menu-item")) renderArticleInModal(click.dataset.id, articlesFetch)
+    if(params.click.matches(".menu .menu-item")){
+        let { click, renderArticleInModal, articlesFetch } = params;
+        let id = click.dataset.id;
+        renderArticleInModal(id, articlesFetch);
+    } 
 }
+// ------------------------------------------------
 export {
     renderMenu,
     buttonToRemoveMenuItem,

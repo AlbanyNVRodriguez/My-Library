@@ -14,10 +14,11 @@ async function renderArticleInModal(id, articlesFetch){
         success: res => modal.querySelector(".modal-section").innerHTML = res,
         error: err => modal.querySelector(".modal-section").innerHTML = err
     });
-    loadArticlesStatusInLocalStorage(id, modal);
+    renderReadingStatusArticle(id, modal);
     modal.classList.add("active");
 }
-function loadArticlesStatusInLocalStorage(id, modal){
+// RENDER READING STATUS ARTICLE
+function renderReadingStatusArticle(id, modal){
     if(localStorage.getItem("ArticleReadingStatusLocalStorage") !== null && localStorage.getItem("ArticleReadingStatusLocalStorage").includes(id)){
         modal.querySelector(".modal-btnStatus").classList.add("active");
         modal.querySelector(".modal-btnStatus").textContent = "Leido";
@@ -26,6 +27,22 @@ function loadArticlesStatusInLocalStorage(id, modal){
         modal.querySelector(".modal-btnStatus").textContent = "No Leido";
     }
 }
+// GET ARTICLE HTML WITH XMLHTTPREQUEST
+function getArticleHTML(params){
+    let { url, success, error } = params;
+    const XHR = new XMLHttpRequest();
+    XHR.addEventListener("readystatechange", function(){
+        if(XHR.readyState !== 4) return ;
+        XHR.status >= 200 && XHR.status <=299?
+            success(XHR.responseText):
+            error(`Ocurrio un Error: ${XHR.status} - ${XHR.responseText}`);
+    });
+
+    XHR.open("GET", url);
+    XHR.setRequestHeader("Content-type", "application/json; charset=utf8");
+    XHR.send();
+}
+// ------------------------------------------------
 // CLOSE MODAL ON CLICK
 function closeModalOnClick(e){
     if(document.querySelector(".modal").className.includes("active")){
@@ -47,6 +64,7 @@ function closeModalOnClick(e){
 function buttonToCloseTheModal(click){
     if(click.matches(".modal .modal-btnClose"))  document.querySelector(".modal").classList.remove("active");
 }
+// ------------------------------------------------
 // BUTTON TO SAVE OR DELETE STATUS ARTICLE FROM MODAL
 function buttonToSaveOrDeleteTheReadingStatusOfTheArticle(params){
     if(params.click.matches(".modal .modal-btnStatus")){
@@ -66,25 +84,12 @@ function buttonToSaveOrDeleteTheReadingStatusOfTheArticle(params){
         
     }
 }
-// GET ARTICLE HTML WITH XMLHTTPREQUEST
-function getArticleHTML(params){
-    let { url, success, error } = params;
-    const XHR = new XMLHttpRequest();
-    XHR.addEventListener("readystatechange", function(){
-        if(XHR.readyState !== 4) return ;
-        XHR.status >= 200 && XHR.status <=299?
-            success(XHR.responseText):
-            error(`Ocurrio un Error: ${XHR.status} - ${XHR.responseText}`);
-    });
-
-    XHR.open("GET", url);
-    XHR.setRequestHeader("Content-type", "application/json; charset=utf8");
-    XHR.send();
-}
+// ------------------------------------------------
 // DISABLE SCROLL FOR MODAL
 function disableScrollingWhenOpeningModal(){
     if(document.querySelector(".modal").className.includes("active")) window.scrollTo(0,0);
 }
+// ------------------------------------------------
 export {
     buttonToCloseTheModal,
     buttonToSaveOrDeleteTheReadingStatusOfTheArticle,
