@@ -26,7 +26,7 @@
     {
         "id": 4,
         "title": "Typescript - Introducción",
-        "img": "java",
+        "img": "typescript",
         "modal": "Typescript - Introducción.html"
     },
     {
@@ -56,7 +56,7 @@
     {
         "id": 9,
         "title": "JS - LocalStorage",
-        "img": "mysql",
+        "img": "javascript",
         "modal": "JS - LocalStorage"
     },
     {
@@ -69,7 +69,7 @@
         "id": 11,
         "title": "Ajax - Introduccion",
         "subtitle": "Introducción",
-        "img": "mysql",
+        "img": "javascript",
         "modal": "Ajax - Introduccion.html"
     }
 ]
