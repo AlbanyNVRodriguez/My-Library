@@ -9,30 +9,32 @@ async function renderArticleInModal(id, articlesFetch){
     modal.querySelector(".modal-header h2").textContent = article[0].title.split("-")[0];
     modal.querySelector(".modal-header h3").textContent = article[0].title.split("-")[1];
     
-    getArticleHTML({
+    getHtmlArticle({
         url: `articles/${article[0].modal}`,
         success: res => modal.querySelector(".modal-section").innerHTML = res,
         error: err => modal.querySelector(".modal-section").innerHTML = err
     });
+
     renderReadingStatusArticle(id, modal);
     modal.classList.add("active");
 }
 // RENDER READING STATUS ARTICLE
 function renderReadingStatusArticle(id, modal){
+    let btnStatus = modal.querySelector(".modal-btnStatus");
     if(localStorage.getItem("ArticleReadingStatusLocalStorage") !== null && localStorage.getItem("ArticleReadingStatusLocalStorage").includes(id)){
-        modal.querySelector(".modal-btnStatus").classList.add("active");
-        modal.querySelector(".modal-btnStatus").textContent = "Leido";
+        btnStatus.classList.add("active");
+        btnStatus.textContent = "Leido";
     }else{
-        modal.querySelector(".modal-btnStatus").classList.remove("active");
-        modal.querySelector(".modal-btnStatus").textContent = "No Leido";
+        btnStatus.classList.remove("active");
+        btnStatus.textContent = "No Leido";
     }
 }
-// GET ARTICLE HTML WITH XMLHTTPREQUEST
-function getArticleHTML(params){
+// GET HTML ARTICLE WITH XMLHTTPREQUEST
+function getHtmlArticle(params){
     let { url, success, error } = params;
     const XHR = new XMLHttpRequest();
     XHR.addEventListener("readystatechange", function(){
-        if(XHR.readyState !== 4) return ;
+        if(XHR.readyState !== 4) return "";
         XHR.status >= 200 && XHR.status <=299?
             success(XHR.responseText):
             error(`Ocurrio un Error: ${XHR.status} - ${XHR.responseText}`);

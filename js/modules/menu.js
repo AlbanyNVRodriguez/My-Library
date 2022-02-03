@@ -1,28 +1,31 @@
 // RENDER MENU
 function renderMenu(){
     document.querySelector(".menu").innerHTML="";
-    if(localStorage.getItem("ArticlesLocalStorage") !== null && localStorage.getItem("ArticlesLocalStorage") !== "") addItemsInMenu();
+    if(localStorage.getItem("ArticlesLocalStorage") !== null && localStorage.getItem("ArticlesLocalStorage") !== "") addMenuItems();
 }
-// ADD ITEMS IN MENU
-function addItemsInMenu(){
+// ADD MENU ITEMS
+function addMenuItems(){
     let articlesInLocalStorage = localStorage.getItem("ArticlesLocalStorage").split(",");
-    const $ul = document.querySelector(".menu"),
+    const $menu = document.querySelector(".menu"),
     $template = document.querySelector(".template-item").content,
     fragment = document.createDocumentFragment();
+
     articlesInLocalStorage.forEach(idArticle => {
-        let itemMenu = createItemFromTemplate(idArticle, $template);
-        fragment.appendChild(itemMenu);
+        let $menuItem = createItemFromTemplate(idArticle, $template);
+        fragment.appendChild($menuItem);
     });
-    $ul.append(fragment);
+    $menu.append(fragment);
 }
 // CREATE ITEM FROM TEMPLATE
 function createItemFromTemplate(id, $template){
-    let img = document.querySelector(`.main-article[data-id="${id}"] img`).src;
-    let title = document.querySelector(`.main-article[data-id="${id}"] .main_article-title`).textContent;
+    let articleImgSrc = document.querySelector(`.main-article[data-id="${id}"] img`).src,
+    articleTitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-title`).textContent;
+
     $template.querySelector(".menu-item").dataset.id = id;
-    $template.querySelector(".menu-item").dataset.title = title;
-    $template.querySelector(".menu_item-picture img").src = img;
-    $template.querySelector(".menu_item-picture img").alt = title;
+    $template.querySelector(".menu-item").dataset.title = articleTitle;
+    $template.querySelector(".menu_item-picture img").src = articleImgSrc;
+    $template.querySelector(".menu_item-picture img").alt = articleTitle;
+    
     let copy = document.importNode($template, true);
     return copy;
 }

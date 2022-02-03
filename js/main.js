@@ -3,7 +3,7 @@ import { effectNavbarScroll, buttonChangeThemePage, buttonToShowOrHideTheMenu, t
 // MENU
 import { renderMenu, buttonToRemoveMenuItem, openModalFromMenuItem } from "./modules/menu.js"; 
 // ARTICLES
-import { articlesFetch, renderArticles, buttonToSaveOrDeleteArticle, buttonOpenModalFromArticle, changeArticleButtonStateToSaved } from "./modules/articles.js"; 
+import { renderArticles, articlesFetch, buttonToSaveOrDeleteArticle, changeArticleButtonStateToSaved, buttonOpenModalFromArticle } from "./modules/articles.js"; 
 // MODAL
 import { renderArticleInModal, disableScrollingWhenOpeningModal, buttonToCloseTheModal, buttonToSaveOrDeleteTheReadingStatusOfTheArticle, closeModalOnClick } from "./modules/modal.js"; 
 // LOCAL STORAGE
@@ -17,8 +17,8 @@ document.addEventListener("click", e=> {
     let click = e.target;
     // navbar
     buttonChangeThemePage(click);
-    // menu
     buttonToShowOrHideTheMenu(click);
+    // menu
     buttonToRemoveMenuItem( {click, deleteArticleInLocalStorage, changeArticleButtonStateToSaved} );
     openModalFromMenuItem({click, renderArticleInModal, articlesFetch});
     // article

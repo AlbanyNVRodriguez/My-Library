@@ -21,7 +21,7 @@ function themeLight(){
 // ------------------------------------------------
 // BUTTON TO SHOW OR HIDE THE MENU
 function buttonToShowOrHideTheMenu(click){
-    if(click.matches(".navbar .nav_btn-menu")) click.className.includes("active")? hideTheMenu() : showTheMenu(click);
+    if(click.matches(".navbar .nav_btn-menu")) click.className.includes("active")? hideTheMenu() : showTheMenu();
     if(!click.matches(".navbar .nav_btn-menu") && 
     !click.matches(".menu") && 
     !click.matches(".main .main_art_buttons-save") && 
@@ -30,8 +30,8 @@ function buttonToShowOrHideTheMenu(click){
     }
 }
 // SHOW THE MENU
-function showTheMenu(buttonMenu){
-    buttonMenu.classList.add("active");
+function showTheMenu(){
+    document.querySelector(".navbar .nav_btn-menu").classList.add("active");
     document.querySelector(".menu").classList.add("active");
 }
 // HIDE THE MENU
