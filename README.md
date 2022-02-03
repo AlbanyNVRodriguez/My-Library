@@ -1,4 +1,4 @@
-![pc](/img/pc.png?raw=true)
+![pc](/img/PC.png?raw=true)
 
 # My Library
 
