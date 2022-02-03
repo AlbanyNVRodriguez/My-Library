@@ -10,4 +10,4 @@ A small personal library, where I host articles on topics I learn on my journey 
 
 ## Authors
 
-* **Albany Vergel**  - [PurpleBooth](https://github.com/AlbanyNVRodriguez)
+* **Albany Vergel**  - [AlbanyNVRodriguez](https://github.com/AlbanyNVRodriguez)
