@@ -1,5 +1,5 @@
 ![pc version](/img/PC.png?raw=true)
-![telefono version](/img/Teleono.png?raw=true)
+![telefono version](/img/Telefono.png?raw=true)
 
 # My Library
 
