@@ -1,3 +1,5 @@
+![pc](/img/pc.png?raw=true)
+
 # My Library
 
 A small personal library, where I host articles on topics I learn on my journey as a web developer.
