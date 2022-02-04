@@ -6,7 +6,8 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "roboto";
+  font-weight: 300;
   font-size: 62.5%;
   width: 100%;
 }
@@ -606,8 +607,8 @@ body.light .menu .menu-item::after {
   visibility: hidden;
   position: fixed;
   top: 2vh;
-  left: 2vw;
-  width: 96vw;
+  left: 5vw;
+  width: 90vw;
   height: 96vh;
   background: #141414;
   z-index: 11;
@@ -630,12 +631,11 @@ body.light .menu .menu-item::after {
 }
 
 .modal .modal-btnClose {
-  position: absolute;
-  top: 0;
-  right: 0.5rem;
-  font-size: 2rem;
+  position: fixed;
+  top: .5rem;
+  left: 5.5rem;
+  font-size: 3rem;
   border: none;
-  background: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -652,6 +652,7 @@ body.light .menu .menu-item::after {
   opacity: 0.8;
   cursor: pointer;
   color: #F39035;
+  background: none;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
@@ -690,6 +691,59 @@ body.light .menu .menu-item::after {
 .modal .modal-header h2 {
   color: #F39035;
   font-size: 2rem;
+}
+
+.modal .modal-section {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  row-gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.modal .modal-section > * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  row-gap: .5rem;
+}
+
+.modal .modal-section div {
+  padding: 0 0 0 1rem;
+  border-left: solid thin rgba(243, 144, 53, 0.5);
+}
+
+.modal .modal-section h3 {
+  font-size: 1.8rem;
+}
+
+.modal .modal-section ul {
+  list-style: none;
+}
+
+.modal .modal-section a {
+  color: #F39035;
 }
 
 .modal .modal-btnStatus {
@@ -732,6 +786,14 @@ body.light .modal .modal-btnClose {
 }
 
 body.light .modal .modal-header h2 {
+  color: #37AEE1;
+}
+
+body.light .modal .modal-section div {
+  border-left: solid thin rgba(55, 174, 225, 0.5);
+}
+
+body.light .modal .modal-section a {
   color: #37AEE1;
 }
 

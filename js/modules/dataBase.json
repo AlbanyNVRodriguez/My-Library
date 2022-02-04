@@ -1,9 +1,9 @@
 [
     {
         "id": 0,
-        "title": "Paradigmas de Programación - Introducción",
+        "title": "Paradigma de Programación",
         "img": "branch",
-        "modal": "Paradigmas de Programacion - Introduccion.html"
+        "modal": "0.Paradigma de Programacion.html"
     },
     {
         "id": 1,
@@ -57,19 +57,19 @@
         "id": 9,
         "title": "JS - LocalStorage",
         "img": "javascript",
-        "modal": "JS - LocalStorage"
+        "modal": "9.JS - LocalStorage"
     },
     {
         "id": 10,
         "title": "CSS - Selectores Avanzados",
         "img": "mysql",
-        "modal": "CSS - Selectores Avanzados.html"
+        "modal": "10.CSS - Selectores Avanzados.html"
     },
     {
         "id": 11,
         "title": "Ajax - Introduccion",
         "subtitle": "Introducción",
         "img": "javascript",
-        "modal": "Ajax - Introduccion.html"
+        "modal": "11.Ajax - Introduccion.html"
     }
 ]

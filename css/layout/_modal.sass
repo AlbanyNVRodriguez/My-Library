@@ -11,26 +11,26 @@
     visibility: hidden
     position: fixed
     top: 2vh
-    left: 2vw
-    width: 96vw
+    left: 5vw
+    width: 90vw
     height: 96vh
     background: $black_3
     z-index: 11
     +flex(start, center, column nowrap)
     row-gap: 3rem
     transition: all 200ms ease-in-out
-    
+
     .modal-btnClose
-        position: absolute
-        top: 0
-        right: 0.5rem
-        font-size: 2rem
+        position: fixed
+        top: .5rem
+        left: 5.5rem
+        font-size: 3rem
         border: none
-        background: none
         +flex(center, center, row nowrap)
         opacity: 0.8
         cursor: pointer
         color: $orange
+        background: none
         transition: all 200ms ease-in-out
         &:hover
             opacity: 1
@@ -46,7 +46,24 @@
         h2
             color: $orange
             font-size: 2rem
-    
+    .modal-section
+        width: 90%
+        +flex(start, start, column nowrap)
+        row-gap: 2rem
+        font-size: 1.5rem
+        &>*
+            +flex(start, start, column nowrap)
+            row-gap: .5rem
+        div
+            padding: 0 0 0 1rem
+            border-left: solid thin rgba($orange, .5)  
+        h3
+            font-size: 1.8rem
+        ul
+            list-style: none
+        a
+            color: $orange
+        
     .modal-btnStatus
         border: none
         outline: none
@@ -73,6 +90,11 @@ body.light .modal
         color: $blue
     .modal-header
         h2
+            color: $blue
+    .modal-section
+        div
+            border-left: solid thin rgba($blue, .5)  
+        a
             color: $blue
     .modal-btnStatus
         color: rgba($black_3, .5)
