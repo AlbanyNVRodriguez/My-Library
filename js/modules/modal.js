@@ -12,7 +12,7 @@ async function renderArticleInModal(id, articlesFetch){
     getHtmlArticle({
         url: `articles/${article[0].modal}`,
         success: res => modal.querySelector(".modal-section").innerHTML = res,
-        error: err => modal.querySelector(".modal-section").innerHTML = err
+        error: err => modal.querySelector(".modal-section").innerHTML = `<p>${err}</p>`
     });
 
     renderReadingStatusArticle(id, modal);
@@ -48,13 +48,13 @@ function getHtmlArticle(params){
 // CLOSE MODAL ON CLICK
 function closeModalOnClick(e){
     if(document.querySelector(".modal").className.includes("active")){
-        let modal = document.querySelector(".modal");
-        let modalBorder = {
+        let modal = document.querySelector(".modal"),
+        modalBorder = {
             top:  modal.getClientRects()[0].top,
             bottom: modal.getClientRects()[0].bottom,
             left: modal.getClientRects()[0].left,
             right: modal.getClientRects()[0].right
-        }
+        };
 
         if(e.clientY > modalBorder.bottom ||
             e.clientY < modalBorder.top ||

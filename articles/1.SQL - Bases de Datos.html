@@ -1,0 +1,133 @@
+<div>
+    <h3>¿Que son las Bases de Datos?</h3>
+    <p>
+        Una base de datos es un conjunto de datos pertenecientes a un mismo contexto y almacenados para su uso posterior.
+    </p>
+</div>
+<div>
+    <h3>¿Que es SQL?</h3>
+    <p>
+        Un tipo de lenguaje de programación que te permite manipular y descargar datos de una base de datos. 
+        <br>Tiene la capacidad de realizar cálculos avanzados. 
+        <br>Es utilizado en la mayoría de empresas que almacenan datos en una base de datos.
+        <br>Ha sido y sigue siendo el lenguaje de programación más usado para bases de datos relacionales.
+    </p>
+</div>
+<div>
+    <h3>¿Qué tipos de bases de datos SQL existen?</h3>
+    <p>
+        <b>Oracle:</b> Oracle PLSQL es una extensión de SQL usada en Oracle.
+    </p>
+    <p>
+        <b>MySQL:</b> Esta considerada la base de datos de código abierto más popular del mundo.
+    </p>
+    <p>
+        <b>Microsoft SQL Server:</b> Es un tipo de SQL desarrollado por Microsoft y tiene algunas características especiales como que soporta procedimientos almacenados.
+    </p>
+    <p>
+        <b>PostgreSQL:</b> Es otro tipo de base de datos SQL de código abierto. No es tan popular como MySQL pero está ganando terreno.
+    </p>
+</div>
+<div>
+    <h3>Comandos básicos de SQL</h3>
+    <p><b>CREATE DATABASE:</b> Crear una nueva base de datos.</p>
+    <code>
+        CREATE DATABASE nombre_de_baseDeDatos;
+        <br>
+        <br>
+        CREATE DATABASE mi_baseDeDatos;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>USE: </b> Hace referencia a nuestra base de datos, para comenzar a utilizarla.</p>
+    <code>
+        USE mi_baseDeDatos;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>DROP DATABASE:</b> Elimina la base de datos.</p>
+    <code>
+        DROP mi_baseDeDatos;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>CREATE TABLE:</b> Crear una nueva tabla.</p>
+    <code>
+        CREATE TABLE nombre_de_tabla (nombre_del_campo TIPO_DE_DATO PRIMARY KEY, nombre TIPO_DE_DATO(longitud));
+        <br>
+        <br>
+        CREATE TABLE nueva_tabla ( id INT PRIMARY KEY, nombre VARCHAR(20), apellido VARCHAR(20), cedula VARCHAR(15));
+    </code>
+    <!-- ---------------------- -->
+    <p><b>ALTER TABLE:</b> Puede usar un comando ALTER TABLE para agregar, modificar o quitar columnas o restricciones.</p>
+    <code>
+        ALTER TABLE table_name predicado;
+    </code>
+    <p>donde el predicado puede ser cualquiera de los siguientes:</p>
+    <code>
+        ADD COLUMN nombre_column TIPO_DE_DATO(longitud);
+        <br>
+        Agrega una columna nueva
+    </code>
+    <code>
+        DROP COLUMN nombre_column;
+        <br>
+        elimina una columna
+    </code>
+    <code>
+        ALTER TABLE mi_tabla ADD COLUMN descripcion VARCHAR(100);
+    </code>
+    <code>
+        ALTER TABLE mi_tabla DROP COLUMN descripcion;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>DROP TABLE:</b> Elimina la tabla.</p>
+    <code>
+        DROP TABLE nombre_tabla;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>WHERE:</b> Permite seleccionar qué filtro aplicar a los datos.</p>
+    <code>
+        SELECT nombre FROM mi_tabla WHERE id=2;
+    </code>
+    <!-- ---------------------- -->
+    <p><b>INSERT INTO:</b> Insertar datos.</p>
+    <code>
+        INSERT INTO nombre_tabla VALUES(value_1, value_2)
+        <br>
+        Ingresa/Agrega un nuevo registro en la tabla
+    </code>
+    <code>
+        INSERT INTO usuarios(nombre, apellido, cedula) values("jose", "parra", "v12345678");
+    </code>
+    <!-- ---------------------- -->
+    <p><b>SELECT:</b> Seleccionar los datos.</p>
+    <code>
+        SELECT * FROM nombre_tabla
+        <br>
+        Selecciona todos los datos de una tabla
+    </code>
+    <code>
+        SELECT * FROM nombre_tabla WHERE id=id_consultar
+        <br>
+        Selecciona todos los datos de una tabla que cumplan cierta condición.
+    </code>
+    <!-- ---------------------- -->
+    <p><b>UPDATE:</b> Actualizar los datos.</p>
+    <code>
+        UPDATA mi_tabla SET nombre=nuevo_nomrbe, apellido=nuevo_apellido WHERE nombre="alejo" AND apellido="pernia";
+        <br>
+        Actualiza todos los datos de una tabla que cumplan cierta condición.
+    </code>
+    <!-- ---------------------- -->
+    <p><b>DELETE:</b> Borrar datos.</p>
+    <code>
+        DELETE * FROM nombre_tabla 
+        <br>
+        Elimina todos los datos de una tabla
+    </code>
+    <code>
+        DELETE * FROM mi_tabla WHERE id=id_elimnar
+        <br>
+        Elimina los datos de una tabla que cumplan cierta condición.
+    </code>
+</div>
+<a href="http://sql.11sql.com/sql-intro.htm" rel="nofollow"  target="_blank">Más sobre SQL</a>
+<a href="https://es.wikipedia.org/wiki/Base_de_datos" rel="nofollow"  target="_blank">Más sobre Bases de Datos</a>

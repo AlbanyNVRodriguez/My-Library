@@ -19,12 +19,11 @@
     +flex(start, center, column nowrap)
     row-gap: 3rem
     transition: all 200ms ease-in-out
-
     .modal-btnClose
         position: fixed
-        top: .5rem
-        left: 5.5rem
-        font-size: 3rem
+        top: -0.7rem
+        right: 0
+        font-size: 2.5rem
         border: none
         +flex(center, center, row nowrap)
         opacity: 0.8
@@ -48,21 +47,26 @@
             font-size: 2rem
     .modal-section
         width: 90%
-        +flex(start, start, column nowrap)
-        row-gap: 2rem
         font-size: 1.5rem
-        &>*
-            +flex(start, start, column nowrap)
-            row-gap: .5rem
+        +flex(start, start, column nowrap)
+        row-gap: 4rem
         div
+            +flex(start, start, column nowrap)
+            row-gap: 1rem
             padding: 0 0 0 1rem
             border-left: solid thin rgba($orange, .5)  
         h3
             font-size: 1.8rem
+            color: $orange
         ul
             list-style: none
         a
             color: $orange
+        b
+            color: $blue
+        code
+            padding: 1rem 2rem
+            background: rgba($white_1, .1)
         
     .modal-btnStatus
         border: none
@@ -96,6 +100,10 @@ body.light .modal
             border-left: solid thin rgba($blue, .5)  
         a
             color: $blue
+        h3
+            color: $blue
+        b
+            color: $orange
     .modal-btnStatus
         color: rgba($black_3, .5)
         &:hover

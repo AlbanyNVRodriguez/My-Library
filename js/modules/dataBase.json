@@ -1,75 +1,57 @@
 [
     {
         "id": 0,
-        "title": "Paradigma de Programación",
+        "title": "Paradigma de Programación - Estilos de Programación",
         "img": "branch",
         "modal": "0.Paradigma de Programacion.html"
     },
     {
         "id": 1,
-        "title": "Java - Nivel Basico",
-        "img": "java",
-        "modal": "Java - Nivel Basico.html"
+        "title": "SQL - Bases de Datos",
+        "img": "db",
+        "modal": "1.SQL - Bases de Datos.html"
     },
     {
         "id": 2,
-        "title": "SQL - Introducción",
-        "img": "sql",
-        "modal": "SQL - Introducción.html"
+        "title": "Bases de Datos - Relacionales vs no Relacionales",
+        "img": "db",
+        "modal": "2.Bases de Datos - Relacionales vs no Relacionales.html"
     },
     {
         "id": 3,
-        "title": "Java - Nivel Intermedio",
-        "img": "java",
-        "modal": "Java - Nivel Intermedio.html"
+        "title": "Git - Control de versiones",
+        "img": "git",
+        "modal": "3.Git.html"
     },
     {
         "id": 4,
-        "title": "Typescript - Introducción",
-        "img": "typescript",
-        "modal": "Typescript - Introducción.html"
+        "title": "CSS - Hojas de estilo en cascada",
+        "img": "css",
+        "modal": "4.CSS.html"
     },
     {
         "id": 5,
-        "title": "Git - Comandos Basicos",
-        "img": "git",
-        "modal": "Git - Comandos Basicos.html"
+        "title": "MySQL - RDBMS",
+        "img": "mysql",
+        "modal": "5.MySQL.html"
     },
     {
         "id": 6,
-        "title": "Bases de Datos - Introducción",
-        "img": "db",
-        "modal": "Bases de Datos - Introduccion.html"
+        "title": "Javascript - LocalStorage",
+        "img": "javascript",
+        "modal": "6.Javascript - LocalStorage"
     },
     {
         "id": 7,
-        "title": "CSS - Introducción",
-        "img": "css",
-        "modal": "CSS - Introducción.html"
+        "title": "CSS - Selectores",
+        "img": "mysql",
+        "modal": "7.CSS - Selectores.html"
     },
     {
         "id": 8,
-        "title": "MySQL - Introducción",
-        "img": "mysql",
-        "modal": "MySQL - Introducción.html"
-    },
-    {
-        "id": 9,
-        "title": "JS - LocalStorage",
-        "img": "javascript",
-        "modal": "9.JS - LocalStorage"
-    },
-    {
-        "id": 10,
-        "title": "CSS - Selectores Avanzados",
-        "img": "mysql",
-        "modal": "10.CSS - Selectores Avanzados.html"
-    },
-    {
-        "id": 11,
-        "title": "Ajax - Introduccion",
+        "title": "Javascript - AJAX",
         "subtitle": "Introducción",
         "img": "javascript",
-        "modal": "11.Ajax - Introduccion.html"
+        "modal": "8.Javascript - AJAX.html"
     }
 ]

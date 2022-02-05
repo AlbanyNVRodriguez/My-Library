@@ -19,12 +19,13 @@ function addMenuItems(){
 // CREATE ITEM FROM TEMPLATE
 function createItemFromTemplate(id, $template){
     let articleImgSrc = document.querySelector(`.main-article[data-id="${id}"] img`).src,
-    articleTitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-title`).textContent;
+    articleTitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-title`).textContent,
+    articleSubtitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-subtitle`).textContent;
 
     $template.querySelector(".menu-item").dataset.id = id;
-    $template.querySelector(".menu-item").dataset.title = articleTitle;
+    $template.querySelector(".menu-item").dataset.title = articleSubtitle;
     $template.querySelector(".menu_item-picture img").src = articleImgSrc;
-    $template.querySelector(".menu_item-picture img").alt = articleTitle;
+    $template.querySelector(".menu_item-picture img").alt = `${articleTitle} - ${articleSubtitle}`;
     
     let copy = document.importNode($template, true);
     return copy;

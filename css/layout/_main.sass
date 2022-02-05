@@ -3,16 +3,17 @@
     height: auto
     +flex(space-around, center, row wrap)
     .main-article::before
+        content: "Leido"
+        padding: 0.2rem 3rem
         opacity: 0
         visibility: hidden
         position: absolute
         top: 1rem
         left: -2.5rem
-        content: "Leido"
-        padding: 0.2rem 3rem
         text-align: center
-        background: $white_2
+        font-weight: 400
         color: $black_3
+        background: $yellow
         transform: rotate(-40deg)
         transition: all 200ms ease-in-out
     .main-article
@@ -78,7 +79,7 @@
         
 body.light .main
     .main-article::before
-        background: $black_3
+        background: $blue
         color: $white_2
     .main-article   
         background: $white_1
