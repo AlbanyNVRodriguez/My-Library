@@ -6,41 +6,52 @@
 </div>
 <div>
     <h3>¿Como se usa?</h3>
-    <p><b>supongamos que tenemos un carrito de compras.</b></p>
+    <p>supongamos que tenemos un carrito de compras.</p>
     <code>
         <pre>
-            let carrito = [];
+            <b>let carrito = [];</b>
         </pre>
     </code>
-    <p><b>Este carrito debe ir agregando productos cada que el usuario lo solicite.</b></p>
+    <p>Este carrito debe ir agregando productos cada que el usuario lo solicite.</p>
     <code>
         <pre>
+            document.addEventListener("DOMCOntentLoaded", function(){
+                &nbsp;&nbsp;<b>renderCarrito();</b>
+            });
             document.addEventListener("click", e=>{
-                &nbsp;&nbsp;carrito.push(e.target.name);
+                &nbsp;&nbsp;<b>carrito.push(e.target.name);</b>
+                &nbsp;&nbsp;<b>renderCarrito();</b>
             });
             console.log(carrito);
             // ["camisa", "zapato", "gorro"]
         </pre>
     </code>
-    <p><b>Pero que pasa si el usuario actualiza la pagina.</b></p>
+    <p>Pero que pasa si el usuario actualiza la pagina.</p>
     <code>
         <pre>
             console.log(carrito);
             // [] - carrito vacio porque se actualizo la pagina.
         </pre>
     </code>
-    <p><b>ahora, para no perder esos datos ante una recarga de la pagina o el cierre del navedaor utilizaremos el local storage</b></p>
+    <p>ahora, para no perder esos datos ante una recarga de la pagina o el cierre del navegador, utilizaremos el local storage</p>
     <code>
         <pre>
-            if(<b>localStorage.getItem("arrayCarrito")</b> !== null & <b>localStorage.getItem("arrayCarrito")</b> !== ""){
-                &nbsp;&nbsp;let carrito = <b>localStorage.getItem("arrayCarrito").split(",");</b>
+            // localStorage.getItem("nombre") - para obtener valor
+            // localStorage.setItem("nombre", value) - para declara su valor
+            if(<b>localStorage.getItem("arrayCarrito") !== null & localStorage.getItem("arrayCarrito") !== ""</b>){
+                &nbsp;&nbsp;<b>let carrito = localStorage.getItem("arrayCarrito").split(",");</b>
             }else{
-                &nbsp;&nbsp;let carrito = [];
+                &nbsp;&nbsp;<b>let carrito = [];</b>
                 &nbsp;&nbsp;<b>localStorage.setItem("arrayCarrito", carrito);</b>
             }
+            document.addEventListener("DOMContentLoaded", function(){
+                &nbsp;&nbsp;<b>renderCarrito();</b>
+            });
             document.addEventListener("click", e=>{
                 &nbsp;&nbsp;carrito.push(e.target.name);
                 &nbsp;&nbsp;<b>localStorage.setItem("arrayCarrito", carrito);</b>
+                &nbsp;&nbsp;<b>renderCarrito();</b>
+
             });
         </pre>
     </code>
