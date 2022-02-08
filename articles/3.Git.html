@@ -1,6 +1,249 @@
 <div>
     <h3>¿Que es Git?</h3>
     <p>
-        
+        Git es un sistema de control de versiones distribuido gratuito y de código abierto diseñado para manejar todo, desde proyectos pequeños hasta proyectos muy grandes, con rapidez y eficiencia.
     </p>
 </div>
+<div>
+    <h3>¿Para que sirve Git?</h3>
+    <p>Su propósito es llevar registro de los cambios en archivos de computadora incluyendo coordinar el trabajo que varias personas realizan sobre archivos compartidos en un repositorio de código.</p>
+</div>
+<div>
+    <h3>¿Porque utilizar Git?</h3>
+    <p>
+        Git permite también la gestión distribuida del trabajo. 
+        Es decir, trabajar en equipo sin tener que estar físicamente cerca. 
+        Cada programador cuenta con su propia copia del repositorio en su equipo. 
+        Y cada vez que se realice algún cambio, la modificación se aplica al proyecto en desarrollo.
+    </p>
+</div>
+<div>
+    <h3>Comandos Basicos</h3>
+    <code>
+        <b>git init</b>
+        <br>
+        Inicializa un repositorio local de Git.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git clone</b>
+        <br>
+        Crea una copia local de un repositorio remoto.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git status</b>
+        <br>
+        Comprobar el status actual.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git add [nombreDelArchivo.extension]</b>
+        <br>
+        Añade un archivo a la zona de subir cambios.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git commit -m "[Mensaje del commit]"</b>
+        <br>
+        Crea un mensaje explicativo de los cambios.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git rm -r [nombreDelArchivo.extension]</b>
+        <br>
+        Elimina un archivo (o carpeta).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git branch</b>
+        <br>
+        Muestra una lista de las ramas que existen en este proyecto (el asterisco señala la rama activa).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git branch -a</b>
+        <br>
+        Muestra una lista de todas las ramas (locales y remotas).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git branch [nombre de la rama]</b>
+        <br>
+        Crea una nueva rama.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git branch -d [nombre de la rama]</b>
+        <br>
+        Elimina una rama local.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git push origin --delete [nombre de la rama]</b>
+        <br>
+        Elimina una rama remota.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git checkout -b [nombre de la rama]</b>
+        <br>
+        Crea una nueva rama y nos desplaza hasta ella.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git checkout -b [nombre de la rama] origin/[nombre de la rama]</b>
+        <br>
+        Clona una rama remota y nos desplaza hasta ella.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git branch -m [nombre de la rama antigua] [nombre de la rama nueva]</b>
+        <br>
+        Renombra una rama local.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git checkout [nombre de la rama]</b>
+        <br>
+        Cambia a una rama concreta.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git checkout -</b>
+        <br>
+        Cambia a la última rama activa.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git checkout -- [nombre-del-archivo.txt]</b>
+        <br>
+        Descarta cambios en un archivo.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git merge [nombre de la rama]</b>
+        <br>
+        Combina una rama concreta con la rama activa.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git merge [nombre de la rama de origen] [nombre de la rama de destino]</b>
+        <br>
+        Combina una rama concreta (rama de origen) con una rama nueva (rama de destino).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git stash</b>
+        <br>
+        Revierte los últimos cambios y errores en el directorio actual.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git stash clear</b>
+        <br>
+        Revierte todos los cambios en el directorio actual.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git push origin [nombre de la rama]</b>
+        <br>
+        Envía una rama local al repositorio remoto.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git push -u origin [nombre de la rama]</b>
+        <br>
+        Envía cambios al repositorio remoto (y te posiciona en la rama concreta).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git push</b>
+        <br>
+        Envía cambios al repositorio remoto (en la rama actual).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git pull</b>
+        <br>
+        Actualiza el repositorio local al último commit enviado.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git pull origin [nombre de la rama]</b>
+        <br>
+        Trae / agarra todos los cambios de un repositorio remoto.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git remote add origin ssh://git@github.com/[nombreDeUsuario]/[nombre-del-repo].git</b>
+        <br>
+        Añade cambios a un repositorio remoto.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git remote set-url origin ssh://git@github.com/[nombreDeUsuario]/[nombre-del-repo].git</b>
+        <br>
+        Ubica la rama remota de un repositorio remoto mediante su SSH.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git log</b>
+        <br>
+        Visualiza los cambios.
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git log --summary</b>
+        <br>
+        Visualiza los cambios (en detalle).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git log --oneline</b>
+        <br>
+        Visualiza los cambios (resumido).
+    </code>
+    <br>
+    <!-- ---------- -->
+    <code>
+        <b>git diff [source branch] [target branch]</b>
+        <br>
+        Vista previa de los cambios antes de hacer un merge.
+    </code>
+    <br>
+    <!-- ---------- -->
+
+</div>
+<a href="https://git-scm.com/book/es/v2" rel="nofollow" target="_blank">Más sobre Git</a>
+<a href="https://github.com/joshnh/Git-Commands/blob/master/READMEes.md" rel="nofollow" target="_blank">Más sobre Comandos de git</a>

@@ -1,0 +1,47 @@
+<div>
+    <h3>¿Que es el local storage?</h3>
+    <p>
+        Es una API de almacenamiento web que nos permite almacenar datos de manera local en el navegador, sin necesidad de realizar alguna conexión a una base de datos.
+    </p>
+</div>
+<div>
+    <h3>¿Como se usa?</h3>
+    <p><b>supongamos que tenemos un carrito de compras.</b></p>
+    <code>
+        <pre>
+            let carrito = [];
+        </pre>
+    </code>
+    <p><b>Este carrito debe ir agregando productos cada que el usuario lo solicite.</b></p>
+    <code>
+        <pre>
+            document.addEventListener("click", e=>{
+                &nbsp;&nbsp;carrito.push(e.target.name);
+            });
+            console.log(carrito);
+            // ["camisa", "zapato", "gorro"]
+        </pre>
+    </code>
+    <p><b>Pero que pasa si el usuario actualiza la pagina.</b></p>
+    <code>
+        <pre>
+            console.log(carrito);
+            // [] - carrito vacio porque se actualizo la pagina.
+        </pre>
+    </code>
+    <p><b>ahora, para no perder esos datos ante una recarga de la pagina o el cierre del navedaor utilizaremos el local storage</b></p>
+    <code>
+        <pre>
+            if(<b>localStorage.getItem("arrayCarrito")</b> !== null & <b>localStorage.getItem("arrayCarrito")</b> !== ""){
+                &nbsp;&nbsp;let carrito = <b>localStorage.getItem("arrayCarrito").split(",");</b>
+            }else{
+                &nbsp;&nbsp;let carrito = [];
+                &nbsp;&nbsp;<b>localStorage.setItem("arrayCarrito", carrito);</b>
+            }
+            document.addEventListener("click", e=>{
+                &nbsp;&nbsp;carrito.push(e.target.name);
+                &nbsp;&nbsp;<b>localStorage.setItem("arrayCarrito", carrito);</b>
+            });
+        </pre>
+    </code>
+</div>

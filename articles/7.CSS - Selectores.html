@@ -1,0 +1,96 @@
+<div>
+    <h3>¿Que son los selectores en CSS?</h3>
+    <p>
+        Estos definen sobre qué elementos se aplicará un conjunto de reglas CSS.
+    </p>
+</div>
+<div>
+    <h3>Selectores</h3>
+    <p><b> Selector de tipo: </b> Selecciona todos los elementos que coinciden con el nombre del elemento especificado.</p>
+    <code>
+        <pre>
+            input{
+                color: blue;
+            }
+        </pre>
+    </code>
+    <br>
+    <!-- ----------- -->
+    <p><b>Selector de clase: </b>Selecciona todos los elementos que tienen el atributo de class especificado.</p>
+    <code>
+        <pre>
+            .className{
+                color: yellow;
+            }
+        </pre>
+    </code>
+    <br>
+    <!-- ----------- -->
+    <p><b>Selector de ID: </b>Selecciona un elemento basándose en el valor de su atributo id. Solo puede haber un elemento con un determinado ID dentro de un documento.</p>
+    <code>
+        <pre>
+            #nombre{
+                color: orange;
+            }
+        </pre>
+        
+    </code>
+    <br>
+    <!-- ----------- -->
+    <p><b>Selector universal: </b>Selecciona todos los elementos. Opcionalmente, puede estar restringido a un espacio de nombre específico o a todos los espacios de nombres.</p>
+    <code>
+        <pre>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+        </pre>
+    </code>
+    <br>
+    <!-- ----------- -->
+    <p><b>Selector de atributo: </b>Selecciona elementos basándose en el valor de un determinado atributo.</p>
+    <code>
+        <pre>
+            [data-text="descripcion"]{
+                color: red;
+            }
+        </pre>
+    </code>
+    <!-- ----------- -->
+    <p><b>Selector descendiente: </b>Se aplican estilos a elementos dentro de otros.</p>
+    <code>
+        <pre>
+            .wrap div{
+                width: 200px;
+                height: 200px;
+            }
+        </pre>
+    </code>
+    <!-- ----------- -->
+    <p><b>Selector hijo: </b>Se aplican estilos a elementos hijos directos.</p>
+    <code>
+        <pre>
+            div > a{
+                color: purple;
+            }
+        </pre>
+    </code>
+    <!-- ----------- -->
+    <p><b>Selector hermano adyacente: </b>Se aplican estilos a elementos que siguen a otros.</p>
+    <code>
+        <pre>
+            header + section{
+                background: pink;
+            }
+        </pre>
+    </code>
+    <!-- ----------- -->
+    <p><b>Selector hermano general: </b>Se aplican estilos a elementos al mismo nivel.</p>
+    <code>
+        <pre>
+            header ~ section{
+                background: orange;
+            } 
+        </pre>
+    </code>
+</div>

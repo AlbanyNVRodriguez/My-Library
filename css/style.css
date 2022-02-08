@@ -42,6 +42,10 @@ img {
           user-select: none;
 }
 
+pre {
+  white-space: pre-line;
+}
+
 .wrap {
   padding-top: 6rem;
   display: -webkit-box;
@@ -695,7 +699,7 @@ body.light .menu .menu-item::after {
 }
 
 .modal .modal-section {
-  width: 90%;
+  max-width: 800px;
   font-size: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;

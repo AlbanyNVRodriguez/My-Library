@@ -37,14 +37,14 @@
     },
     {
         "id": 6,
-        "title": "Javascript - LocalStorage",
+        "title": "Javascript - Lenguaje de Programación",
         "img": "javascript",
-        "modal": "6.Javascript - LocalStorage"
+        "modal": "6.Javascript.html"
     },
     {
         "id": 7,
         "title": "CSS - Selectores",
-        "img": "mysql",
+        "img": "css",
         "modal": "7.CSS - Selectores.html"
     },
     {
@@ -53,5 +53,11 @@
         "subtitle": "Introducción",
         "img": "javascript",
         "modal": "8.Javascript - AJAX.html"
+    },
+    {
+        "id": 9,
+        "title": "Javascript - Local Storage",
+        "img": "javascript",
+        "modal": "9.Javascript - Local Storage.html"
     }
 ]
