@@ -699,6 +699,7 @@ body.light .menu .menu-item::after {
 }
 
 .modal .modal-section {
+  width: 100%;
   max-width: 800px;
   font-size: 1.5rem;
   display: -webkit-box;
@@ -718,6 +719,7 @@ body.light .menu .menu-item::after {
 }
 
 .modal .modal-section div {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -754,8 +756,19 @@ body.light .menu .menu-item::after {
 }
 
 .modal .modal-section code {
+  width: 100%;
+  overflow-x: scroll;
   padding: 1rem 2rem;
   background: rgba(238, 238, 238, 0.1);
+}
+
+.modal .modal-section code::-webkit-scrollbar {
+  height: 1px;
+}
+
+.modal .modal-section code::-webkit-scrollbar-thumb {
+  background: #F39035;
+  border-radius: 10px;
 }
 
 .modal .modal-btnStatus {

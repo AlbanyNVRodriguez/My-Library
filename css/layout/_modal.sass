@@ -46,15 +46,18 @@
             color: $orange
             font-size: 2rem
     .modal-section
+        width: 100%
         max-width: 800px
         font-size: 1.5rem
         +flex(start, start, column nowrap)
         row-gap: 4rem
         div
+            width: 100%
             +flex(start, start, column nowrap)
             row-gap: 1rem
             padding: 0 0 0 1rem
             border-left: solid thin rgba($orange, .5)  
+            
         h3
             font-size: 1.8rem
             color: $orange
@@ -65,9 +68,15 @@
         b
             color: $blue
         code
+            width: 100%
+            overflow-x: scroll
             padding: 1rem 2rem
             background: rgba($white_1, .1)
-        
+            &::-webkit-scrollbar
+                height: 1px
+            &::-webkit-scrollbar-thumb
+                background: $orange
+                border-radius: 10px
     .modal-btnStatus
         border: none
         outline: none
