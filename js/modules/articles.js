@@ -48,9 +48,9 @@ function createArticleFromTemplate(article, $template){
 // BUTTON TO OPEN MODAL FROM ARTICLE
 function buttonOpenModalFromArticle(params){
     if(params.click.matches(".main .main_art_buttons-read")){
-        let { click, renderArticleInModal } = params;
+        let { click, renderArticleInModal, articlesFetch, openModal } = params;
         let id = click.closest(".main-article").dataset.id;
-        renderArticleInModal(id, articlesFetch);
+        openModal({ id, renderArticleInModal, articlesFetch });
     }
 }
 // ------------------------------------------------

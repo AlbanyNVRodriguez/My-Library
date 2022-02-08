@@ -640,12 +640,13 @@ body.light .menu .menu-item::after {
   transition: all 200ms ease-in-out;
 }
 
-.modal .modal-btnClose {
+.modal .modal-btn {
   position: absolute;
-  top: 0rem;
   left: 1rem;
-  font-size: 2.5rem;
   border: none;
+  opacity: 0.8;
+  cursor: pointer;
+  background: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -659,16 +660,27 @@ body.light .menu .menu-item::after {
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
-  opacity: 0.8;
-  cursor: pointer;
-  color: #F39035;
-  background: none;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
-.modal .modal-btnClose:hover {
+.modal .modal-btn:hover {
   opacity: 1;
+}
+
+.modal .modal-btn-close {
+  font-size: 2.5rem;
+  color: #F39035;
+  top: 0rem;
+}
+
+.modal .modal-btn-saved {
+  top: 4rem;
+  color: #37AEE1;
+}
+
+.modal .modal-btn-saved.remove {
+  color: #F39035;
 }
 
 .modal .modal-header {

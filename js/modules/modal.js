@@ -1,3 +1,16 @@
+// OPEN MODAL
+function openModal(params){
+    let { id, renderArticleInModal, articlesFetch } = params;
+    let btnSaved = document.querySelector(".modal .modal-btn-saved");
+    if(localStorage.getItem("ArticlesLocalStorage").includes(id)){
+        btnSaved.textContent = "Eliminar";
+        btnSaved.classList.add("remove");
+    }else{
+        btnSaved.textContent = "Guardar";
+        btnSaved.classList.remove("remove");
+    }
+    renderArticleInModal(id, articlesFetch);
+}
 // RENDER ARTICLE IN MODAL
 async function renderArticleInModal(id, articlesFetch){
     let modal = document.querySelector(".modal");
@@ -64,7 +77,26 @@ function closeModalOnClick(e){
 }
 // BUTTON TO CLOSE THE MODAL
 function buttonToCloseTheModal(click){
-    if(click.matches(".modal .modal-btnClose"))  document.querySelector(".modal").classList.remove("active");
+    if(click.matches(".modal .modal-btn-close"))  document.querySelector(".modal").classList.remove("active");
+}
+// BUTTON TO SAVE ARTICLE THE MODAL
+function buttonToSavedArticleTheModal(params){
+    if(params.click.matches(".modal .modal-btn-saved")){
+        let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage, changeArticleButtonStateToDelete, changeArticleButtonStateToSaved } = params;
+        let id = document.querySelector(".modal").dataset.id;
+        if(click.textContent == "Guardar"){
+            saveArticleInLocalStorage(id);
+            changeArticleButtonStateToDelete(id);
+            click.textContent = "Eliminar";
+            click.classList.add("remove");
+        }else{
+            deleteArticleInLocalStorage(id);
+            changeArticleButtonStateToSaved(id);
+            click.textContent = "Guardar";
+            click.classList.remove("remove");
+        }
+        renderMenu();
+    }
 }
 // ------------------------------------------------
 // BUTTON TO SAVE OR DELETE STATUS ARTICLE FROM MODAL
@@ -93,7 +125,9 @@ function disableScrollingWhenOpeningModal(){
 }
 // ------------------------------------------------
 export {
+    openModal,
     buttonToCloseTheModal,
+    buttonToSavedArticleTheModal,
     buttonToSaveOrDeleteTheReadingStatusOfTheArticle,
     closeModalOnClick,
     renderArticleInModal,

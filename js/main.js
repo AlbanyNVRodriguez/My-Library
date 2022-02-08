@@ -3,9 +3,9 @@ import { effectNavbarScroll, buttonChangeThemePage, buttonToShowOrHideTheMenu, t
 // MENU
 import { renderMenu, buttonToRemoveMenuItem, openModalFromMenuItem } from "./modules/menu.js"; 
 // ARTICLES
-import { renderArticles, articlesFetch, buttonToSaveOrDeleteArticle, changeArticleButtonStateToSaved, buttonOpenModalFromArticle } from "./modules/articles.js"; 
+import { renderArticles, articlesFetch, buttonToSaveOrDeleteArticle, changeArticleButtonStateToSaved, changeArticleButtonStateToDelete, buttonOpenModalFromArticle } from "./modules/articles.js"; 
 // MODAL
-import { renderArticleInModal, disableScrollingWhenOpeningModal, buttonToCloseTheModal, buttonToSaveOrDeleteTheReadingStatusOfTheArticle, closeModalOnClick } from "./modules/modal.js"; 
+import { openModal, renderArticleInModal, disableScrollingWhenOpeningModal, buttonToCloseTheModal, buttonToSavedArticleTheModal, buttonToSaveOrDeleteTheReadingStatusOfTheArticle, closeModalOnClick } from "./modules/modal.js"; 
 // LOCAL STORAGE
 import { loadArticlesFromLocalStorage, loadThemeFromLocalStorage, saveArticleInLocalStorage, deleteArticleInLocalStorage,  saveArticleReadInLocalStorage, deleteArticleReadInLocalStorage} from "./modules/localStorage.js"; 
 
@@ -20,12 +20,13 @@ document.addEventListener("click", e=> {
     buttonToShowOrHideTheMenu(click);
     // menu
     buttonToRemoveMenuItem( {click, deleteArticleInLocalStorage, changeArticleButtonStateToSaved} );
-    openModalFromMenuItem({click, renderArticleInModal, articlesFetch});
+    openModalFromMenuItem({click, renderArticleInModal, articlesFetch, openModal});
     // article
     buttonToSaveOrDeleteArticle( {click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage} );
-    buttonOpenModalFromArticle({click, renderArticleInModal});
+    buttonOpenModalFromArticle({click, renderArticleInModal, articlesFetch, openModal});
     // Modal
     buttonToCloseTheModal(click);
+    buttonToSavedArticleTheModal({ click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage, changeArticleButtonStateToDelete, changeArticleButtonStateToSaved });
     buttonToSaveOrDeleteTheReadingStatusOfTheArticle({ click, saveArticleReadInLocalStorage, deleteArticleReadInLocalStorage });
     closeModalOnClick(e);
 });

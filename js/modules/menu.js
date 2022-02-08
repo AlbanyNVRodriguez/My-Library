@@ -45,9 +45,9 @@ function buttonToRemoveMenuItem(params){
 // OPEN MODAL FROM MENU ITEM
 function openModalFromMenuItem(params){
     if(params.click.matches(".menu .menu-item")){
-        let { click, renderArticleInModal, articlesFetch } = params;
+        let { click, renderArticleInModal, articlesFetch, openModal } = params;
         let id = click.dataset.id;
-        renderArticleInModal(id, articlesFetch);
+        openModal({ id, renderArticleInModal, articlesFetch });
     } 
 }
 // ------------------------------------------------

@@ -19,20 +19,26 @@
     +flex(start, center, column nowrap)
     row-gap: 3rem
     transition: all 200ms ease-in-out
-    .modal-btnClose
+    .modal-btn
         position: absolute
-        top: 0rem
         left: 1rem
-        font-size: 2.5rem
         border: none
-        +flex(center, center, row nowrap)
         opacity: 0.8
         cursor: pointer
-        color: $orange
         background: none
+        +flex(center, center, row nowrap)
         transition: all 200ms ease-in-out
         &:hover
             opacity: 1
+    .modal-btn-close
+        font-size: 2.5rem
+        color: $orange
+        top: 0rem
+    .modal-btn-saved
+        top: 4rem
+        color: $blue
+        &.remove
+            color: $orange
     .modal-header
         +flex(center,center, column nowrap)
         row-gap: 0.5rem
