@@ -47,6 +47,7 @@ pre {
 }
 
 .wrap {
+  min-height: 100vh;
   padding-top: 6rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,6 +247,55 @@ body.light .navbar.scroll {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.main-filters {
+  margin: 2rem 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.main-filters .filters-filter {
+  margin: 0px 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: #141414;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.main-filters .filters-filter.active, .main-filters .filters-filter:hover {
+  background: #F39035 !important;
+}
+
+.main-articles {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -257,7 +307,7 @@ body.light .navbar.scroll {
           flex-flow: row wrap;
 }
 
-.main .main-article::before {
+.main-articles .main-article::before {
   content: "Leido";
   padding: 0.2rem 3rem;
   opacity: 0;
@@ -275,7 +325,7 @@ body.light .navbar.scroll {
   transition: all 200ms ease-in-out;
 }
 
-.main .main-article {
+.main-articles .main-article {
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -301,22 +351,22 @@ body.light .navbar.scroll {
   transition: all 200ms ease;
 }
 
-.main .main-article.read::before {
+.main-articles .main-article.read::before {
   opacity: 1;
   visibility: visible;
 }
 
-.main .main_article-picture {
+.main-articles .main_article-picture {
   width: 8rem;
   height: 8rem;
 }
 
-.main .main_article-picture img {
+.main-articles .main_article-picture img {
   width: 100%;
   height: 100%;
 }
 
-.main .main_article-text {
+.main-articles .main_article-text {
   font-size: .9rem;
   font-weight: 200;
   display: -webkit-box;
@@ -336,16 +386,16 @@ body.light .navbar.scroll {
   text-align: center;
 }
 
-.main .main_article-text .main_article-title {
+.main-articles .main_article-text .main_article-title {
   color: #ECD92A;
 }
 
-.main .main_article-text .main_article-subtitle {
+.main-articles .main_article-text .main_article-subtitle {
   color: #eee;
   letter-spacing: 1px;
 }
 
-.main .main_article-buttons {
+.main-articles .main_article-buttons {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -362,7 +412,7 @@ body.light .navbar.scroll {
           flex-flow: row nowrap;
 }
 
-.main .main_article-buttons .main_article_buttons-btn {
+.main-articles .main_article-buttons .main_article_buttons-btn {
   width: 6rem;
   height: 2rem;
   border-radius: 20px;
@@ -379,50 +429,55 @@ body.light .navbar.scroll {
           user-select: none;
 }
 
-.main .main_article-buttons .main_article_buttons-btn.remove {
+.main-articles .main_article-buttons .main_article_buttons-btn.remove {
   background: rgba(243, 144, 53, 0.9);
 }
 
-.main .main_article-buttons .main_article_buttons-btn.remove:hover {
+.main-articles .main_article-buttons .main_article_buttons-btn.remove:hover {
   background: #F39035;
 }
 
-.main .main_article-buttons .main_art_buttons-read {
+.main-articles .main_article-buttons .main_art_buttons-read {
   color: #333E48;
   background: rgba(236, 217, 42, 0.9);
 }
 
-.main .main_article-buttons .main_art_buttons-read:hover {
+.main-articles .main_article-buttons .main_art_buttons-read:hover {
   background: #ECD92A;
 }
 
-.main .main_article-buttons .main_art_buttons-save {
+.main-articles .main_article-buttons .main_art_buttons-save {
   color: #eee;
   background: rgba(51, 62, 72, 0.9);
 }
 
-.main .main_article-buttons .main_art_buttons-save:hover {
+.main-articles .main_article-buttons .main_art_buttons-save:hover {
   background: #333E48;
 }
 
-body.light .main .main-article::before {
+body.light .main .main-filters .filters-filter {
+  background: #eee;
+  color: #141414;
+}
+
+body.light .main .main-articles .main-article::before {
   background: #37AEE1;
   color: #ddd;
 }
 
-body.light .main .main-article {
+body.light .main .main-articles .main-article {
   background: #eee;
 }
 
-body.light .main .main-article .main_article-text .main_article-title {
+body.light .main .main-articles .main-article .main_article-text .main_article-title {
   color: #37AEE1;
 }
 
-body.light .main .main-article .main_article-text .main_article-subtitle {
+body.light .main .main-articles .main-article .main_article-text .main_article-subtitle {
   color: #141414;
 }
 
-body.light .main .main-article .main_article-buttons .main_art_buttons-read {
+body.light .main .main-articles .main-article .main_article-buttons .main_art_buttons-read {
   background: rgba(55, 174, 225, 0.9);
 }
 

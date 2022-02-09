@@ -1,18 +1,7 @@
 // RENDER ATICLES
-async function renderArticles(){
-    let articles = await articlesFetch();
+async function renderArticles(articles){
     orderBooksByTitle(articles);
     addArticlesInMain(articles);
-}
-// GETTING ARTICLES FROM JSON
-async function articlesFetch(){
-    try { 
-        const res = await fetch("js/modules/dataBase.json"),
-        json = await (res.ok ? res.json() : Promise.reject(res));
-        return json;
-    } catch (err) {
-        return console.log("error al obtener los articulos del json");
-    }
 }
 // ORDER ARTICLES BY TITLE
 function orderBooksByTitle(articles){
@@ -24,15 +13,15 @@ function orderBooksByTitle(articles){
 // ------------------------------------------------
 // ADD ARTICLES IN MAIN
 function addArticlesInMain(articles){
-    const $main = document.querySelector(".main"),
+    const $mainArticles = document.querySelector(".main-articles"),
     $template =  document.querySelector(".template-article").content,
     fragment = document.createDocumentFragment();
-
+    $mainArticles.innerHTML="";
     articles.forEach( art => {
         let $article = createArticleFromTemplate(art, $template);
         fragment.appendChild($article);
     });
-    $main.append(fragment);
+    $mainArticles.append(fragment);
 }
 // CREATE ARTICLE FROM TEMPLATE
 function createArticleFromTemplate(article, $template){
@@ -48,16 +37,16 @@ function createArticleFromTemplate(article, $template){
 // BUTTON TO OPEN MODAL FROM ARTICLE
 function buttonOpenModalFromArticle(params){
     if(params.click.matches(".main .main_art_buttons-read")){
-        let { click, renderArticleInModal, articlesFetch, openModal } = params;
+        let { click, renderArticleInModal, openModal, articles } = params;
         let id = click.closest(".main-article").dataset.id;
-        openModal({ id, renderArticleInModal, articlesFetch });
+        openModal({ id, renderArticleInModal, articles });
     }
 }
 // ------------------------------------------------
 // BUTTON TO SAVE OR DELETE ARTICLE
 function buttonToSaveOrDeleteArticle(params){
     if(params.click.matches(".main_art_buttons-save")){
-        let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage } = params;
+        let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage, articles } = params;
         let article = click.closest(".main-article"),
         id = article.dataset.id;
         if(click.textContent == "Guardar"){
@@ -67,7 +56,7 @@ function buttonToSaveOrDeleteArticle(params){
             deleteArticleInLocalStorage(id);
             changeArticleButtonStateToSaved(id);
         }
-        renderMenu();
+        renderMenu(articles);
     }
 }
 // CHANGE ARTICLE BUTTON STATE TO DELETE
@@ -79,15 +68,64 @@ function changeArticleButtonStateToDelete(id){
 // CHANGE ARTICLE BUTTON STATE TO SAVED
 function changeArticleButtonStateToSaved(id){
     let btnArticle = document.querySelector(`.main-article[data-id="${id}"] .main_art_buttons-save`);
-    btnArticle.textContent="Guardar";
-    btnArticle.classList.remove("remove");
+    if(btnArticle){
+        btnArticle.textContent="Guardar";
+        btnArticle.classList.remove("remove");
+    }
+}
+// ------------------------------------------------
+// FILTERS
+function filter(click, loadArticlesFromLocalStorage, articles){
+    if(click.matches(".main-filters .filters-filter")){
+        removeFilters(click);
+        renderFilteredArticles(click.dataset.value, loadArticlesFromLocalStorage, articles);
+    }
+}
+async function renderFilteredArticles(filter, loadArticlesFromLocalStorage, articles){
+    let articlesFilter = [];
+    articles.forEach(art => {
+        if(art.title.includes(filter)) articlesFilter.push(art);
+    });
+    orderBooksByTitle(articlesFilter);
+    document.querySelector(".main-articles").innerHTML="";
+    if(articlesFilter.length == 0){
+        document.querySelector(".main-articles").innerHTML = `<h2>No hay articulos`;
+        if(!document.querySelector(".filters-filter.active")){
+        addArticlesInMain(articles);
+            loadArticlesFromLocalStorage();
+        }
+    }else{
+        if(document.querySelector(".filters-filter.active")){
+            addArticlesInMain(articlesFilter);
+            loadArticlesFromLocalStorage();
+        }else{
+            addArticlesInMain(articles);
+            loadArticlesFromLocalStorage();
+        }
+    }
+}
+function removeFilters(click){
+    if(click.className.includes("active")){
+        click.classList.remove("active");
+    }else{
+        let filters = document.querySelectorAll(".main-filters .filters-filter");
+        filters.forEach(filter => {
+            filter.classList.remove("active");
+        });
+        addFilter(click);
+    }
+}
+function addFilter(click){
+    click.classList.add("active");
 }
 // ------------------------------------------------
 export {
-    articlesFetch,
     renderArticles,
     buttonToSaveOrDeleteArticle,
     changeArticleButtonStateToSaved,
     changeArticleButtonStateToDelete,
-    buttonOpenModalFromArticle
+    buttonOpenModalFromArticle,
+    orderBooksByTitle,
+    addArticlesInMain,
+    filter
 }

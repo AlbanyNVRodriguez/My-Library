@@ -1,6 +1,22 @@
 .main
     width: 90vw
     height: auto
+    +flex(space-between, center, column nowrap)
+.main-filters
+    margin: 2rem 0
+    width: 100%
+    +flex(center, center, row wrap)
+    .filters-filter
+        margin: 0px 1rem
+        padding: 0.5rem 1rem
+        border-radius: 10px
+        background: $black_3
+        cursor: pointer
+        transition: all 200ms ease
+        &.active, &:hover
+            background: $orange !important
+.main-articles
+    width: 100%
     +flex(space-around, center, row wrap)
     .main-article::before
         content: "Leido"
@@ -76,16 +92,23 @@
             background: rgba($black_1, .9)
             &:hover
                 background: $black_1
-        
+
+
 body.light .main
-    .main-article::before
-        background: $blue
-        color: $white_2
-    .main-article   
-        background: $white_1
-        .main_article-text .main_article-title
-            color: $blue
-        .main_article-text .main_article-subtitle
+    .main-filters 
+        .filters-filter
+            background: $white_1
             color: $black_3
-        .main_article-buttons .main_art_buttons-read
-            background: rgba($blue, .9)
+            
+    .main-articles
+        .main-article::before
+            background: $blue
+            color: $white_2
+        .main-article   
+            background: $white_1
+            .main_article-text .main_article-title
+                color: $blue
+            .main_article-text .main_article-subtitle
+                color: $black_3
+            .main_article-buttons .main_art_buttons-read
+                background: rgba($blue, .9)

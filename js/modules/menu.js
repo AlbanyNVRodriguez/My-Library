@@ -1,31 +1,29 @@
 // RENDER MENU
-function renderMenu(){
+async function renderMenu(articles){
     document.querySelector(".menu").innerHTML="";
-    if(localStorage.getItem("ArticlesLocalStorage") !== null && localStorage.getItem("ArticlesLocalStorage") !== "") addMenuItems();
+    if(localStorage.getItem("ArticlesLocalStorage") !== null && localStorage.getItem("ArticlesLocalStorage") !== "") addMenuItems(articles);
 }
 // ADD MENU ITEMS
-function addMenuItems(){
+function addMenuItems(articles){
     let articlesInLocalStorage = localStorage.getItem("ArticlesLocalStorage").split(",");
     const $menu = document.querySelector(".menu"),
     $template = document.querySelector(".template-item").content,
     fragment = document.createDocumentFragment();
 
     articlesInLocalStorage.forEach(idArticle => {
-        let $menuItem = createItemFromTemplate(idArticle, $template);
+        let $menuItem = createItemFromTemplate(idArticle, $template, articles);
         fragment.appendChild($menuItem);
     });
     $menu.append(fragment);
 }
 // CREATE ITEM FROM TEMPLATE
-function createItemFromTemplate(id, $template){
-    let articleImgSrc = document.querySelector(`.main-article[data-id="${id}"] img`).src,
-    articleTitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-title`).textContent,
-    articleSubtitle = document.querySelector(`.main-article[data-id="${id}"] .main_article-subtitle`).textContent;
+function createItemFromTemplate(id, $template, articles){
+    let article = articles.filter(art=> art.id==id)[0];
 
-    $template.querySelector(".menu-item").dataset.id = id;
-    $template.querySelector(".menu-item").dataset.title = articleSubtitle;
-    $template.querySelector(".menu_item-picture img").src = articleImgSrc;
-    $template.querySelector(".menu_item-picture img").alt = `${articleTitle} - ${articleSubtitle}`;
+    $template.querySelector(".menu-item").dataset.id = article.id;
+    $template.querySelector(".menu-item").dataset.title = article.title.split("-")[1];
+    $template.querySelector(".menu_item-picture img").src = `img/${article.img}.svg`;
+    $template.querySelector(".menu_item-picture img").alt = article.title;
     
     let copy = document.importNode($template, true);
     return copy;
@@ -34,20 +32,20 @@ function createItemFromTemplate(id, $template){
 // BUTTON TO REMOVE MENU ITEM
 function buttonToRemoveMenuItem(params){
     if(params.click.matches(".menu-item .menu_item-btn")){
-        let { click, deleteArticleInLocalStorage, changeArticleButtonStateToSaved} = params;
+        let { click, deleteArticleInLocalStorage, changeArticleButtonStateToSaved, articles} = params;
         let id = click.parentElement.dataset.id;
         deleteArticleInLocalStorage(id);
         changeArticleButtonStateToSaved(id);
-        renderMenu();
+        renderMenu(articles);
     }
 }
 // ------------------------------------------------
 // OPEN MODAL FROM MENU ITEM
 function openModalFromMenuItem(params){
     if(params.click.matches(".menu .menu-item")){
-        let { click, renderArticleInModal, articlesFetch, openModal } = params;
+        let { click, renderArticleInModal, articles, openModal } = params;
         let id = click.dataset.id;
-        openModal({ id, renderArticleInModal, articlesFetch });
+        openModal({ id, renderArticleInModal, articles });
     } 
 }
 // ------------------------------------------------

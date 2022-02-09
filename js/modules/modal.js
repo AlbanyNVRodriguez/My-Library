@@ -1,6 +1,6 @@
 // OPEN MODAL
 function openModal(params){
-    let { id, renderArticleInModal, articlesFetch } = params;
+    let { id, renderArticleInModal, articles } = params;
     let btnSaved = document.querySelector(".modal .modal-btn-saved");
     if(localStorage.getItem("ArticlesLocalStorage").includes(id)){
         btnSaved.textContent = "Eliminar";
@@ -9,14 +9,13 @@ function openModal(params){
         btnSaved.textContent = "Guardar";
         btnSaved.classList.remove("remove");
     }
-    renderArticleInModal(id, articlesFetch);
+    renderArticleInModal(id, articles);
 }
 // RENDER ARTICLE IN MODAL
-async function renderArticleInModal(id, articlesFetch){
+async function renderArticleInModal(id, articles){
     let modal = document.querySelector(".modal");
     modal.dataset.id = id;
-    let articles = await articlesFetch(), 
-    article = articles.filter(art => art.id == id);
+    let article = articles.filter(art => art.id == id);
 
     modal.querySelector(".modal-header picture img").src = `img/${article[0].img}.svg`;
     modal.querySelector(".modal-header h2").textContent = article[0].title.split("-")[0];
@@ -82,7 +81,7 @@ function buttonToCloseTheModal(click){
 // BUTTON TO SAVE ARTICLE THE MODAL
 function buttonToSavedArticleTheModal(params){
     if(params.click.matches(".modal .modal-btn-saved")){
-        let { click, renderMenu, saveArticleInLocalStorage, deleteArticleInLocalStorage, changeArticleButtonStateToDelete, changeArticleButtonStateToSaved } = params;
+        let { click, renderMenu, articles, saveArticleInLocalStorage, deleteArticleInLocalStorage, changeArticleButtonStateToDelete, changeArticleButtonStateToSaved } = params;
         let id = document.querySelector(".modal").dataset.id;
         if(click.textContent == "Guardar"){
             saveArticleInLocalStorage(id);
@@ -95,7 +94,7 @@ function buttonToSavedArticleTheModal(params){
             click.textContent = "Guardar";
             click.classList.remove("remove");
         }
-        renderMenu();
+        renderMenu(articles);
     }
 }
 // ------------------------------------------------
