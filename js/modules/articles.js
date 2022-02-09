@@ -86,12 +86,10 @@ async function renderFilteredArticles(filter, loadArticlesFromLocalStorage, arti
     articles.forEach(art => {
         if(art.title.includes(filter)) articlesFilter.push(art);
     });
-    orderBooksByTitle(articlesFilter);
-    document.querySelector(".main-articles").innerHTML="";
     if(articlesFilter.length == 0){
         document.querySelector(".main-articles").innerHTML = `<h2>No hay articulos`;
         if(!document.querySelector(".filters-filter.active")){
-        addArticlesInMain(articles);
+            addArticlesInMain(articles);
             loadArticlesFromLocalStorage();
         }
     }else{
