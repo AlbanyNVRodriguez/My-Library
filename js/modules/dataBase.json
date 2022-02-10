@@ -3,61 +3,71 @@
         "id": 0,
         "title": "Paradigma de Programación - Estilos de Programación",
         "img": "branch",
-        "modal": "0.Paradigma de Programacion.html"
+        "modal": "0.Paradigma de Programacion.html",
+        "tags":["paradigmas", "paradigma funcional", "lenguajes", "otros"]
     },
     {
         "id": 1,
         "title": "SQL - Bases de Datos",
         "img": "db",
-        "modal": "1.SQL - Bases de Datos.html"
+        "modal": "1.SQL - Bases de Datos.html",
+        "tags":["bases de datos", "sql", "lenguajes"]
     },
     {
         "id": 2,
         "title": "Bases de Datos - Relacionales vs no Relacionales",
         "img": "db",
-        "modal": "2.Bases de Datos - Relacionales vs no Relacionales.html"
+        "modal": "2.Bases de Datos - Relacionales vs no Relacionales.html",
+        "tags":["bases de datos", "sql", "lenguajes"]
     },
     {
         "id": 3,
         "title": "Git - Control de versiones",
         "img": "git",
-        "modal": "3.Git.html"
+        "modal": "3.Git.html",
+        "tags":["git", "control de versiones"]
     },
     {
         "id": 4,
         "title": "CSS - Hojas de estilo en cascada",
         "img": "css",
-        "modal": "4.CSS.html"
+        "modal": "4.CSS.html",
+        "tags":["css", "componentes", "lenguajes"]
     },
     {
         "id": 5,
         "title": "MySQL - RDBMS",
         "img": "mysql",
-        "modal": "5.MySQL.html"
+        "modal": "5.MySQL.html",
+        "tags":["bases de datos", "sql", "lenguajes"]
     },
     {
         "id": 6,
         "title": "Javascript - Lenguaje de Programación",
         "img": "javascript",
-        "modal": "6.Javascript.html"
+        "modal": "6.Javascript.html",
+        "tags":["javascript", "lenguajes"]
     },
     {
         "id": 7,
         "title": "CSS - Selectores",
         "img": "css",
-        "modal": "7.CSS - Selectores.html"
+        "modal": "7.CSS - Selectores.html",
+        "tags":["css", "selectores", "lenguajes"]
     },
     {
         "id": 8,
         "title": "Javascript - AJAX",
         "subtitle": "Introducción",
         "img": "javascript",
-        "modal": "8.Javascript - AJAX.html"
+        "modal": "8.Javascript - AJAX.html",
+        "tags":["javascript", "ajax", "lenguajes"]
     },
     {
         "id": 9,
         "title": "Javascript - Local Storage",
         "img": "javascript",
-        "modal": "9.Javascript - Local Storage.html"
+        "modal": "9.Javascript - Local Storage.html",
+        "tags":["javascript", "API", "lenguajes"]
     }
 ]

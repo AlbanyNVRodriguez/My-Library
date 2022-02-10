@@ -5,7 +5,6 @@ async function renderArticles(articles){
 }
 // ORDER ARTICLES BY TITLE
 function orderBooksByTitle(articles){
-    // order by title
     articles.sort(function(a,b){
         return (a.title).toLowerCase() > (b.title).toLowerCase()?  1 :  (a.title).toLowerCase() < (b.title).toLowerCase()?  -1 :  0;
     });
@@ -26,6 +25,7 @@ function addArticlesInMain(articles){
 // CREATE ARTICLE FROM TEMPLATE
 function createArticleFromTemplate(article, $template){
     $template.querySelector(".main-article").dataset.id = article.id;
+    $template.querySelector(".main-article").dataset.tags = article.tags;
     $template.querySelector(".main_article-picture img").src = `./img/${article.img}.svg`;
     $template.querySelector(".main_article-text .main_article-title").textContent = article.title.split("-")[0];
     $template.querySelector(".main_article-text .main_article-subtitle").textContent = article.title.split("-")[1];
@@ -81,27 +81,27 @@ function filter(click, loadArticlesFromLocalStorage, articles){
         renderFilteredArticles(click.dataset.value, loadArticlesFromLocalStorage, articles);
     }
 }
+// RENDER FILTERED ARTICLES
 async function renderFilteredArticles(filter, loadArticlesFromLocalStorage, articles){
     let articlesFilter = [];
     articles.forEach(art => {
-        if(art.title.includes(filter)) articlesFilter.push(art);
+        if(art.tags.includes(filter.toLowerCase())) articlesFilter.push(art);
     });
     if(articlesFilter.length == 0){
         document.querySelector(".main-articles").innerHTML = `<h2>No hay articulos`;
-        if(!document.querySelector(".filters-filter.active")){
-            addArticlesInMain(articles);
-            loadArticlesFromLocalStorage();
-        }
+        if(!document.querySelector(".filters-filter.active")) loadArticles(articles);
     }else{
-        if(document.querySelector(".filters-filter.active")){
-            addArticlesInMain(articlesFilter);
-            loadArticlesFromLocalStorage();
-        }else{
-            addArticlesInMain(articles);
-            loadArticlesFromLocalStorage();
-        }
+        document.querySelector(".filters-filter.active")?
+        loadArticles(articlesFilter, addArticlesInMain, loadArticlesFromLocalStorage):
+        loadArticles(articles, addArticlesInMain, loadArticlesFromLocalStorage);
     }
 }
+// LOAD ARTICLES
+function loadArticles(articles, addArticlesInMain, loadArticlesFromLocalStorage){
+    addArticlesInMain(articles);
+    loadArticlesFromLocalStorage();
+}
+// REMOVE FILTERS
 function removeFilters(click){
     if(click.className.includes("active")){
         click.classList.remove("active");
@@ -110,11 +110,8 @@ function removeFilters(click){
         filters.forEach(filter => {
             filter.classList.remove("active");
         });
-        addFilter(click);
+        click.classList.add("active");
     }
-}
-function addFilter(click){
-    click.classList.add("active");
 }
 // ------------------------------------------------
 export {
